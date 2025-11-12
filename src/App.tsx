@@ -1,21 +1,27 @@
 import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import logo from './static/personaLogo.png'; // replace with your image path
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import Products from './pages/Products';
+import ContactUs from './pages/ContactUs';
 
 function App() {
     return (
-        <div className="App">
-            <img src={logo} alt="Logo" style={{ maxWidth: '100%', height: 'auto' }} />
-
-            <h1>COMING SOON</h1>
-
-            <div className="contact-info">
-                423814 РТ, г. Набережные Челны, Хлебный проезд 21.<br />
-                Тел. Горячей линии в РФ: 8 800 600 5635<br />
-                info@personatat.com<br />
-                personatat.com<br />
-                Логинов Сергей Александрович
-            </div>
+        <div className="app-shell">
+            <Header />
+            <main className="main-content">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<AboutUs />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/contact" element={<ContactUs />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+            </main>
+            <Footer />
         </div>
     );
 }
