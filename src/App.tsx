@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Box } from '@mui/material';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -10,9 +11,9 @@ import ContactUs from './pages/ContactUs';
 
 function App() {
     return (
-        <div className="app-shell">
+        <Box className="app-shell">
             <Header />
-            <main className="main-content">
+            <Box component="main" className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<AboutUs />} />
@@ -20,9 +21,9 @@ function App() {
                     <Route path="/contact" element={<ContactUs />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
-            </main>
+            </Box>
             <Footer />
-        </div>
+        </Box>
     );
 }
 

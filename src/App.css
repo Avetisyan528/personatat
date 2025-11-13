@@ -99,6 +99,12 @@
     gap: 32px;
 }
 
+.home-products__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
 .home-product-card {
     height: 100%;
     background: rgba(17, 17, 17, 0.85);
@@ -129,6 +135,12 @@
     text-align: center;
     max-width: 680px;
     margin: 0 auto;
+}
+
+.home-brand__reasons {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .home-brand__description {
