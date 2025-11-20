@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLanguage, NAV_LINKS, Language, availableLanguages } from '../../context/LanguageContext';
-import logo from '../../static/personaLogo.png';
+import logo from '../../static/LogoTransparent.png';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
