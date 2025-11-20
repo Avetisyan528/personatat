@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Products from './pages/Products';
 import ContactUs from './pages/ContactUs';
+import CoffeeMarketAnalysis from './pages/CoffeeMarketAnalysis';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/contact" element={<ContactUs />} />
+                    <Route path="/analysis" element={<CoffeeMarketAnalysis />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Box>
