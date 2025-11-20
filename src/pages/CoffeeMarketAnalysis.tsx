@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 // FIX: Using explicit Chart constructor and registerables to resolve module loading errors
-import { Chart as ChartConstructor, ChartData, registerables } from 'chart.js';
+import { Chart as ChartConstructor, registerables } from 'chart.js';
 
 // Register all components, elements, and scales globally.
 ChartConstructor.register(...registerables);
