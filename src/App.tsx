@@ -9,6 +9,7 @@ import AboutUs from './pages/AboutUs';
 import Products from './pages/Products';
 import ContactUs from './pages/ContactUs';
 import CoffeeMarketAnalysis from './pages/CoffeeMarketAnalysis';
+import BrandDetailSection from './pages/BrandDetailSection';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/products" element={<Products />} />
                     <Route path="/contact" element={<ContactUs />} />
                     <Route path="/analysis" element={<CoffeeMarketAnalysis />} />
+                    <Route path="/marketingResearch" element={<BrandDetailSection />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Box>
@@ -28,5 +30,6 @@ function App() {
         </Box>
     );
 }
+
 
 export default App;
