@@ -79,10 +79,7 @@ type FinalCtaTranslations = {
     note: string;
 };
 
-type PageCopy = {
-    title: string;
-    description: string;
-};
+// Removed PageCopy since it's now split into SimplePageCopy and ContactPageTranslations
 
 type FooterTranslations = {
     description: string;
@@ -97,6 +94,47 @@ type FooterTranslations = {
     rights: string;
 };
 
+// Add new types for the Contact page structure
+type ContactInfoItem = {
+    title: string;
+    value: string;
+};
+
+type ContactFormFields = {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+};
+
+type ContactPageTranslations = {
+    hero: {
+        title: string;
+        subtitle: string;
+        ctaLabel: string;
+    };
+    form: {
+        title: string;
+        description: string;
+        fields: ContactFormFields;
+        buttonLabel: string;
+        submissionMessage: string;
+    };
+    info: {
+        title: string;
+        description: string;
+        email: ContactInfoItem;
+        phone: ContactInfoItem;
+        address: ContactInfoItem;
+    };
+};
+
+// Renamed for clarity, since the old PageCopy was only used for basic pages
+type SimplePageCopy = {
+    title: string;
+    description: string;
+};
+
 type Translations = {
     header: HeaderTranslations;
     pages: {
@@ -106,9 +144,10 @@ type Translations = {
             brandHighlight: BrandHighlightTranslations;
             finalCta: FinalCtaTranslations;
         };
-        about: PageCopy;
-        products: PageCopy;
-        contact: PageCopy;
+        about: SimplePageCopy;
+        products: SimplePageCopy;
+        // Correctly use the detailed type for contact
+        contact: ContactPageTranslations;
     };
     footer: FooterTranslations;
 };
@@ -261,9 +300,41 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Products',
                 description: 'Product details are coming soon.',
             },
+            // CORRECTED: Updated to the detailed structure
             contact: {
-                title: 'Contact Us',
-                description: 'Reach out via phone or email for more information.',
+                hero: {
+                    title: 'Let\'s Start a Conversation',
+                    subtitle: 'Reach out to our team for custom orders, support, or partnership inquiries.',
+                    ctaLabel: 'Learn More About Us',
+                },
+                form: {
+                    title: 'Send Us a Message',
+                    description: 'Our team usually responds within 24 hours on business days.',
+                    fields: {
+                        name: 'Your Full Name',
+                        email: 'Email Address',
+                        subject: 'Subject',
+                        message: 'Your Message',
+                    },
+                    buttonLabel: 'Send Message',
+                    submissionMessage: 'Thank you for your message! We will be in touch soon.',
+                },
+                info: {
+                    title: 'Contact Details',
+                    description: 'You can also reach us directly via the following channels.',
+                    email: {
+                        title: 'Email Support',
+                        value: 'info@personatat.com',
+                    },
+                    phone: {
+                        title: 'Call Us (Toll-Free)',
+                        value: '8 800 600 5635',
+                    },
+                    address: {
+                        title: 'Corporate Office',
+                        value: 'Naberezhnye Chelny, Russia',
+                    },
+                },
             },
         },
         footer: {
@@ -417,9 +488,41 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Продукты',
                 description: 'Сведения о продуктах скоро появятся.',
             },
+            // CORRECTED: Updated to the detailed structure
             contact: {
-                title: 'Контакты',
-                description: 'Свяжитесь с нами по телефону или электронной почте.',
+                hero: {
+                    title: 'Начните разговор с нами',
+                    subtitle: 'Обратитесь к нашей команде по вопросам заказа, поддержки или партнерства.',
+                    ctaLabel: 'Узнать о компании',
+                },
+                form: {
+                    title: 'Отправьте нам сообщение',
+                    description: 'Наша команда обычно отвечает в течение 24 рабочих часов.',
+                    fields: {
+                        name: 'Ваше полное имя',
+                        email: 'Адрес электронной почты',
+                        subject: 'Тема',
+                        message: 'Ваше сообщение',
+                    },
+                    buttonLabel: 'Отправить сообщение',
+                    submissionMessage: 'Спасибо за Ваше сообщение! Мы скоро свяжемся с Вами.',
+                },
+                info: {
+                    title: 'Контактные данные',
+                    description: 'Вы также можете связаться с нами напрямую по следующим каналам.',
+                    email: {
+                        title: 'Техническая поддержка',
+                        value: 'info@personatat.com',
+                    },
+                    phone: {
+                        title: 'Позвоните нам (Бесплатно)',
+                        value: '8 800 600 5635',
+                    },
+                    address: {
+                        title: 'Главный офис',
+                        value: 'г. Набережные Челны, Россия',
+                    },
+                },
             },
         },
         footer: {
@@ -575,9 +678,41 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Продукция',
                 description: 'Продукция турында мәгълүмат әзерләнә.',
             },
+            // CORRECTED: Updated to the detailed structure
             contact: {
-                title: 'Бәйләнеш',
-                description: 'Телефон яки электрон почта аша элемтәгә чыгыгыз.',
+                hero: {
+                    title: 'Әңгәмә башларга вакыт',
+                    subtitle: 'Заказлар, ярдәм яки хезмәттәшлек сораулары буенча безнең командага мөрәжәгать итегез.',
+                    ctaLabel: 'Компания турында белү',
+                },
+                form: {
+                    title: 'Безгә хәбәр җибәрегез',
+                    description: 'Безнең команда гадәттә 24 эш сәгате эчендә җавап бирә.',
+                    fields: {
+                        name: 'Сезнең тулы исемегез',
+                        email: 'Электрон почта адресы',
+                        subject: 'Тема',
+                        message: 'Сезнең хәбәр',
+                    },
+                    buttonLabel: 'Хәбәрне җибәрергә',
+                    submissionMessage: 'Хәбәрегез өчен рәхмәт! Без сезнең белән тиздән элемтәгә керәбез.',
+                },
+                info: {
+                    title: 'Бәйләнеш мәгълүматлары',
+                    description: 'Сез безнең белән түбәндәге каналлар аша да элемтәгә керә аласыз.',
+                    email: {
+                        title: 'Электрон почта ярдәме',
+                        value: 'info@personatat.com',
+                    },
+                    phone: {
+                        title: 'Безгә шалтыратыгыз (бушлай)',
+                        value: '8 800 600 5635',
+                    },
+                    address: {
+                        title: 'Баш офис',
+                        value: 'Россия, Набережные Челны',
+                    },
+                },
             },
         },
         footer: {
@@ -610,9 +745,9 @@ type LanguageProviderProps = {
 };
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
-    children,
-    defaultLanguage = 'en',
-}) => {
+                                                                      children,
+                                                                      defaultLanguage = 'en',
+                                                                  }) => {
     const [language, setLanguage] = React.useState<Language>(defaultLanguage);
 
     const toggleLanguage = React.useCallback(() => {
@@ -645,4 +780,3 @@ export const useLanguage = (): LanguageContextValue => {
 
     return context;
 };
-
