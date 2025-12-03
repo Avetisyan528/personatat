@@ -54,15 +54,6 @@ const Home: React.FC = () => {
                         gap: '20px',
                     }}
                 >
-                    <Typography
-                        variant="overline"
-                        sx={{
-                            letterSpacing: '4px',
-                            color: 'rgba(255, 255, 255, 0.7)',
-                        }}
-                    >
-                        PersonaTat
-                    </Typography>
 
                     <Typography
                         variant="h2"
@@ -190,11 +181,9 @@ const Home: React.FC = () => {
                                 <Typography variant="h6" component="h3" gutterBottom>
                                     {category.title}
                                 </Typography>
-                                <ul>
-                                    {category.details.map((detail, index) => (
-                                        <li key={`${category.id}-detail-${index}`}>{detail}</li>
-                                    ))}
-                                </ul>
+                                <Typography variant="body1" component="h3" gutterBottom>
+                                    {category.details}
+                                </Typography>
                                 <Typography variant="h6" component="h3" gutterBottom>
                                     See More
                                 </Typography>

@@ -1,15 +1,14 @@
 import * as React from 'react';
 
 
-
 export type Language = 'en' | 'ru' | 'tt';
 
 export type NavKey = 'about' | 'contact' | 'products';
 
 export const NAV_LINKS: Array<{ key: NavKey; path: string }> = [
-    { key: 'about', path: '/about' },
-    { key: 'contact', path: '/contact' },
-    { key: 'products', path: '/products' },
+    {key: 'about', path: '/about'},
+    {key: 'contact', path: '/contact'},
+    {key: 'products', path: '/products'},
 ];
 
 export const availableLanguages: Language[] = ['en', 'ru', 'tt'];
@@ -36,7 +35,7 @@ type HeroSectionTranslations = {
 type ProductCategory = {
     id: string;
     title: string;
-    details: string[];
+    details: string;
     imageUrl?: string;
 };
 
@@ -173,8 +172,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     description:
                         'Discover unique blends, premium beans, and tailored solutions for HoReCa and vending.',
                     ctas: [
-                        { id: 'cta-products', label: 'Explore Products', path: '/products' },
-                        { id: 'cta-contact', label: 'Contact Us', path: '/contact' },
+                        {id: 'cta-products', label: 'Explore Products', path: '/products'},
+                        {id: 'cta-contact', label: 'Contact Us', path: '/contact'},
                     ],
                 },
                 productShowcase: {
@@ -183,32 +182,32 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         {
                             id: 'instant-sticks',
                             title: 'Instant & Stick Products',
-                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
+                            details: '3-in-1 coffee mixes, instant tea, and hot chocolate',
                         },
                         {
                             id: 'flavored-ground',
                             title: 'Flavored Ground Coffee',
-                            details: ['Ground coffee with added flavors for a rich taste'],
+                            details: 'Ground coffee with added flavors for a rich taste',
                         },
                         {
                             id: 'classic-ground',
                             title: 'Classic Ground Coffee',
-                            details: ['Traditional ground coffee for everyday enjoyment'],
+                            details: 'Traditional ground coffee for everyday enjoyment',
                         },
                         {
                             id: 'flavored-beans',
                             title: 'Flavored Coffee Beans',
-                            details: ['Whole beans with added flavors for a premium aroma'],
+                            details: 'Whole beans with added flavors for a premium aroma',
                         },
                         {
                             id: 'classic-beans',
                             title: 'Classic Coffee Beans',
-                            details: ['High-quality traditional whole beans'],
+                            details: 'High-quality traditional whole beans',
                         },
                         {
                             id: 'coffee-capsules',
                             title: 'Coffee Capsules',
-                            details: ['Classic or flavored capsules with varying intensities'],
+                            details: 'Classic or flavored capsules with varying intensities',
                         },
                     ],
                     ctaLabel: 'View All Products',
@@ -240,9 +239,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         },
                     ],
                     stats: [
-                        { id: 'stat-1', value: '50+', label: 'Product SKUs' },
-                        { id: 'stat-2', value: '10', label: 'Product categories' },
-                        { id: 'stat-3', value: '100%', label: 'Quality control' },
+                        {id: 'stat-1', value: '50+', label: 'Product SKUs'},
+                        {id: 'stat-2', value: '10', label: 'Product categories'},
+                        {id: 'stat-3', value: '100%', label: 'Quality control'},
                     ],
                     ctaLabel: 'Learn About Us',
                 },
@@ -259,9 +258,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'Naberezhnye Chelny',
                     ],
                     buttons: [
-                        { id: 'final-products', label: 'View Products', path: '/products' },
-                        { id: 'final-contact', label: 'Contact Us', path: '/contact' },
-                        { id: 'final-about', label: 'About Company', path: '/about' },
+                        {id: 'final-products', label: 'View Products', path: '/products'},
+                        {id: 'final-contact', label: 'Contact Us', path: '/contact'},
+                        {id: 'final-about', label: 'About Company', path: '/about'},
                     ],
                     note: 'Hotline available throughout Russia',
                 },
@@ -340,8 +339,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     subtitle: 'PersonaTat — вкус обжарки премиум-класса для дома и бизнеса',
                     description: 'Уникальные бленды, отборные зерна и решения для HoReCa и вендинга.',
                     ctas: [
-                        { id: 'cta-products', label: 'Перейти к продукции', path: '/products' },
-                        { id: 'cta-contact', label: 'Связаться с нами', path: '/contact' },
+                        {id: 'cta-products', label: 'Перейти к продукции', path: '/products'},
+                        {id: 'cta-contact', label: 'Связаться с нами', path: '/contact'},
                     ],
                 },
                 productShowcase: {
@@ -350,32 +349,32 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         {
                             id: 'instant-sticks',
                             title: 'Instant & Stick Products',
-                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
+                            details: '3-in-1 coffee mixes, instant tea, and hot chocolate',
                         },
                         {
                             id: 'flavored-ground',
                             title: 'Flavored Ground Coffee',
-                            details: ['Ground coffee with added flavors for a rich taste'],
+                            details: 'Ground coffee with added flavors for a rich taste',
                         },
                         {
                             id: 'classic-ground',
                             title: 'Classic Ground Coffee',
-                            details: ['Traditional ground coffee for everyday enjoyment'],
+                            details: 'Traditional ground coffee for everyday enjoyment',
                         },
                         {
                             id: 'flavored-beans',
                             title: 'Flavored Coffee Beans',
-                            details: ['Whole beans with added flavors for a premium aroma'],
+                            details: 'Whole beans with added flavors for a premium aroma',
                         },
                         {
                             id: 'classic-beans',
                             title: 'Classic Coffee Beans',
-                            details: ['High-quality traditional whole beans'],
+                            details: 'High-quality traditional whole beans',
                         },
                         {
                             id: 'coffee-capsules',
                             title: 'Coffee Capsules',
-                            details: ['Classic or flavored capsules with varying intensities'],
+                            details: 'Classic or flavored capsules with varying intensities',
                         },
                     ],
                     ctaLabel: 'View All Products',
@@ -407,9 +406,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         },
                     ],
                     stats: [
-                        { id: 'stat-1', value: '50+', label: 'Наименований продукции' },
-                        { id: 'stat-2', value: '10', label: 'Категорий товаров' },
-                        { id: 'stat-3', value: '100%', label: 'Контроль качества' },
+                        {id: 'stat-1', value: '50+', label: 'Наименований продукции'},
+                        {id: 'stat-2', value: '10', label: 'Категорий товаров'},
+                        {id: 'stat-3', value: '100%', label: 'Контроль качества'},
                     ],
                     ctaLabel: 'Узнать о компании',
                 },
@@ -425,9 +424,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'г. Набережные Челны',
                     ],
                     buttons: [
-                        { id: 'final-products', label: 'Посмотреть продукцию', path: '/products' },
-                        { id: 'final-contact', label: 'Связаться с нами', path: '/contact' },
-                        { id: 'final-about', label: 'О компании', path: '/about' },
+                        {id: 'final-products', label: 'Посмотреть продукцию', path: '/products'},
+                        {id: 'final-contact', label: 'Связаться с нами', path: '/contact'},
+                        {id: 'final-about', label: 'О компании', path: '/about'},
                     ],
                     note: 'Горячая линия работает по всей России',
                 },
@@ -507,8 +506,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     description:
                         'Уникаль блендлар, сайланган бөртекләр һәм HoReCa белән вендинг өчен чишелешләр.',
                     ctas: [
-                        { id: 'cta-products', label: 'Продукцияне карау', path: '/products' },
-                        { id: 'cta-contact', label: 'Без белән элемтә', path: '/contact' },
+                        {id: 'cta-products', label: 'Продукцияне карау', path: '/products'},
+                        {id: 'cta-contact', label: 'Без белән элемтә', path: '/contact'},
                     ],
                 },
                 productShowcase: {
@@ -517,32 +516,32 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         {
                             id: 'instant-sticks',
                             title: 'Instant & Stick Products',
-                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
+                            details: '3-in-1 coffee mixes, instant tea, and hot chocolate',
                         },
                         {
                             id: 'flavored-ground',
                             title: 'Flavored Ground Coffee',
-                            details: ['Ground coffee with added flavors for a rich taste'],
+                            details: 'Ground coffee with added flavors for a rich taste',
                         },
                         {
                             id: 'classic-ground',
                             title: 'Classic Ground Coffee',
-                            details: ['Traditional ground coffee for everyday enjoyment'],
+                            details: 'Traditional ground coffee for everyday enjoyment',
                         },
                         {
                             id: 'flavored-beans',
                             title: 'Flavored Coffee Beans',
-                            details: ['Whole beans with added flavors for a premium aroma'],
+                            details: 'Whole beans with added flavors for a premium aroma',
                         },
                         {
                             id: 'classic-beans',
                             title: 'Classic Coffee Beans',
-                            details: ['High-quality traditional whole beans'],
+                            details: 'High-quality traditional whole beans',
                         },
                         {
                             id: 'coffee-capsules',
                             title: 'Coffee Capsules',
-                            details: ['Classic or flavored capsules with varying intensities'],
+                            details: 'Classic or flavored capsules with varying intensities',
                         },
                     ],
                     ctaLabel: 'View All Products',
@@ -574,9 +573,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         },
                     ],
                     stats: [
-                        { id: 'stat-1', value: '50+', label: 'Продукция исемнәре' },
-                        { id: 'stat-2', value: '10', label: 'Товар категорияләре' },
-                        { id: 'stat-3', value: '100%', label: 'Сыйфат контроле' },
+                        {id: 'stat-1', value: '50+', label: 'Продукция исемнәре'},
+                        {id: 'stat-2', value: '10', label: 'Товар категорияләре'},
+                        {id: 'stat-3', value: '100%', label: 'Сыйфат контроле'},
                     ],
                     ctaLabel: 'Компания турында',
                 },
@@ -593,9 +592,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'Набережные Челны шәһәре',
                     ],
                     buttons: [
-                        { id: 'final-products', label: 'Продукцияне карау', path: '/products' },
-                        { id: 'final-contact', label: 'Бәйләнешкә чыгу', path: '/contact' },
-                        { id: 'final-about', label: 'Компания турында', path: '/about' },
+                        {id: 'final-products', label: 'Продукцияне карау', path: '/products'},
+                        {id: 'final-contact', label: 'Бәйләнешкә чыгу', path: '/contact'},
+                        {id: 'final-about', label: 'Компания турында', path: '/about'},
                     ],
                     note: 'Россия буенча эшли торган кайнар линия.',
                 },
