@@ -1,11 +1,12 @@
 import * as React from 'react';
 
+
+
 export type Language = 'en' | 'ru' | 'tt';
 
-export type NavKey = 'home' | 'about' | 'contact' | 'products';
+export type NavKey = 'about' | 'contact' | 'products';
 
 export const NAV_LINKS: Array<{ key: NavKey; path: string }> = [
-    { key: 'home', path: '/' },
     { key: 'about', path: '/about' },
     { key: 'contact', path: '/contact' },
     { key: 'products', path: '/products' },
@@ -36,6 +37,7 @@ type ProductCategory = {
     id: string;
     title: string;
     details: string[];
+    imageUrl?: string;
 };
 
 type ProductShowcaseTranslations = {
@@ -157,7 +159,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
         header: {
             title: 'PersonaTat',
             navLabels: {
-                home: 'Home',
                 about: 'About Us',
                 contact: 'Contact Us',
                 products: 'Products',
@@ -177,67 +178,40 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ],
                 },
                 productShowcase: {
-                    title: 'Coffee Portfolio',
+                    title: 'Our Products',
                     categories: [
                         {
-                            id: 'cat-1',
-                            title: '12 SKUs — 4 packaging options',
-                            details: [
-                                '24 assortment, 25 assortment, 50 assortment, 100 assortment',
-                                'Stick-packed products',
-                            ],
+                            id: 'instant-sticks',
+                            title: 'Instant & Stick Products',
+                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
                         },
                         {
-                            id: 'cat-2',
-                            title: '8 SKUs — 4 weights',
-                            details: ['0.1, 0.25, 0.5, 1 kg', 'Ground coffee with flavors'],
+                            id: 'flavored-ground',
+                            title: 'Flavored Ground Coffee',
+                            details: ['Ground coffee with added flavors for a rich taste'],
                         },
                         {
-                            id: 'cat-3',
-                            title: '5 SKUs — 4 weights',
-                            details: ['0.1, 0.25, 0.5, 1 kg', 'Classic ground coffee'],
+                            id: 'classic-ground',
+                            title: 'Classic Ground Coffee',
+                            details: ['Traditional ground coffee for everyday enjoyment'],
                         },
                         {
-                            id: 'cat-4',
-                            title: '8 SKUs — 4 weights',
-                            details: ['0.5, 1, 5, 10 kg', 'Flavored coffee beans'],
+                            id: 'flavored-beans',
+                            title: 'Flavored Coffee Beans',
+                            details: ['Whole beans with added flavors for a premium aroma'],
                         },
                         {
-                            id: 'cat-5',
-                            title: '5 SKUs — 4 weights',
-                            details: ['0.5, 1, 5, 10 kg', 'Classic coffee beans'],
+                            id: 'classic-beans',
+                            title: 'Classic Coffee Beans',
+                            details: ['High-quality traditional whole beans'],
                         },
                         {
-                            id: 'cat-6',
-                            title: '12 SKUs — 2 weights',
-                            details: [
-                                '0.5, 1 kg',
-                                'HoReCa and vending products',
-                                '3-in-1 coffee, tea, hot chocolate',
-                            ],
-                        },
-                        {
-                            id: 'cat-7',
-                            title: '4 SKUs — 4 packaging options',
-                            details: ['10, 25, 50, 100 pcs', 'Coffee capsules with varying intensity'],
-                        },
-                        {
-                            id: 'cat-8',
-                            title: '4 SKUs — 4 packaging options',
-                            details: ['10, 25, 50, 100 pcs', 'Flavored coffee capsules'],
-                        },
-                        {
-                            id: 'cat-9',
-                            title: '10 packaging types',
-                            details: ['Gift sets'],
-                        },
-                        {
-                            id: 'cat-10',
-                            title: 'Promotional merchandise',
-                            details: ['Brand collateral and accessories'],
+                            id: 'coffee-capsules',
+                            title: 'Coffee Capsules',
+                            details: ['Classic or flavored capsules with varying intensities'],
                         },
                     ],
-                    ctaLabel: 'View Full Product Catalog',
+                    ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
                     title: 'Why Choose PersonaTat?',
@@ -300,7 +274,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Products',
                 description: 'Product details are coming soon.',
             },
-            // CORRECTED: Updated to the detailed structure
             contact: {
                 hero: {
                     title: 'Let\'s Start a Conversation',
@@ -354,7 +327,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
         header: {
             title: 'ПерсонаТат',
             navLabels: {
-                home: 'Главная',
                 about: 'О нас',
                 contact: 'Контакты',
                 products: 'Продукты',
@@ -373,60 +345,40 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ],
                 },
                 productShowcase: {
-                    title: 'Портфолио кофе',
+                    title: 'Our Products',
                     categories: [
                         {
-                            id: 'cat-1',
-                            title: '12 наименований — 4 вида упаковки',
-                            details: ['24 ассорти, 25 ассорти, 50 ассорти, 100 ассорти', 'Стикированный товар'],
+                            id: 'instant-sticks',
+                            title: 'Instant & Stick Products',
+                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
                         },
                         {
-                            id: 'cat-2',
-                            title: '8 наименований — 4 веса',
-                            details: ['0.1, 0.25, 0.5, 1 кг', 'Кофе молотый со вкусами'],
+                            id: 'flavored-ground',
+                            title: 'Flavored Ground Coffee',
+                            details: ['Ground coffee with added flavors for a rich taste'],
                         },
                         {
-                            id: 'cat-3',
-                            title: '5 наименований — 4 веса',
-                            details: ['0.1, 0.25, 0.5, 1 кг', 'Кофе молотый классический'],
+                            id: 'classic-ground',
+                            title: 'Classic Ground Coffee',
+                            details: ['Traditional ground coffee for everyday enjoyment'],
                         },
                         {
-                            id: 'cat-4',
-                            title: '8 наименований — 4 веса',
-                            details: ['0.5, 1, 5, 10 кг', 'Кофе в зернах со вкусами'],
+                            id: 'flavored-beans',
+                            title: 'Flavored Coffee Beans',
+                            details: ['Whole beans with added flavors for a premium aroma'],
                         },
                         {
-                            id: 'cat-5',
-                            title: '5 наименований — 4 веса',
-                            details: ['0.5, 1, 5, 10 кг', 'Кофе в зернах классический'],
+                            id: 'classic-beans',
+                            title: 'Classic Coffee Beans',
+                            details: ['High-quality traditional whole beans'],
                         },
                         {
-                            id: 'cat-6',
-                            title: '12 наименований — 2 веса',
-                            details: ['0.5, 1 кг', 'Продукция HoReCa и вендинга', 'Кофе 3 в 1, чай, шоколад'],
-                        },
-                        {
-                            id: 'cat-7',
-                            title: '4 наименования — 4 вида упаковки',
-                            details: ['10, 25, 50, 100 шт.', 'Кофе в капсулах разной интенсивности'],
-                        },
-                        {
-                            id: 'cat-8',
-                            title: '4 наименования — 4 вида упаковки',
-                            details: ['10, 25, 50, 100 шт.', 'Кофе в капсулах со вкусами'],
-                        },
-                        {
-                            id: 'cat-9',
-                            title: '10 видов упаковки',
-                            details: ['Подарочные наборы'],
-                        },
-                        {
-                            id: 'cat-10',
-                            title: 'Рекламная продукция',
-                            details: ['Фирменные материалы и аксессуары'],
+                            id: 'coffee-capsules',
+                            title: 'Coffee Capsules',
+                            details: ['Classic or flavored capsules with varying intensities'],
                         },
                     ],
-                    ctaLabel: 'Перейти к каталогу продукции',
+                    ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
                     title: 'Почему выбирают нас?',
@@ -488,7 +440,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Продукты',
                 description: 'Сведения о продуктах скоро появятся.',
             },
-            // CORRECTED: Updated to the detailed structure
             contact: {
                 hero: {
                     title: 'Начните разговор с нами',
@@ -542,7 +493,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
         header: {
             title: 'PersonaTat',
             navLabels: {
-                home: 'Төп бит',
                 about: 'Безнең турында',
                 contact: 'Бәйләнеш',
                 products: 'Продукция',
@@ -562,60 +512,40 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ],
                 },
                 productShowcase: {
-                    title: 'Кофе портфолиосы',
+                    title: 'Our Products',
                     categories: [
                         {
-                            id: 'cat-1',
-                            title: '12 исем — 4 төр упаковка',
-                            details: ['24 ассорти, 25 ассорти, 50 ассорти, 100 ассорти', 'Стиклардагы продукция'],
+                            id: 'instant-sticks',
+                            title: 'Instant & Stick Products',
+                            details: ['3-in-1 coffee mixes, instant tea, and hot chocolate'],
                         },
                         {
-                            id: 'cat-2',
-                            title: '8 исем — 4 авырлык',
-                            details: ['0.1, 0.25, 0.5, 1 кг', 'Тәмләштерелгән тартма кофе'],
+                            id: 'flavored-ground',
+                            title: 'Flavored Ground Coffee',
+                            details: ['Ground coffee with added flavors for a rich taste'],
                         },
                         {
-                            id: 'cat-3',
-                            title: '5 исем — 4 авырлык',
-                            details: ['0.1, 0.25, 0.5, 1 кг', 'Классик тартма кофе'],
+                            id: 'classic-ground',
+                            title: 'Classic Ground Coffee',
+                            details: ['Traditional ground coffee for everyday enjoyment'],
                         },
                         {
-                            id: 'cat-4',
-                            title: '8 исем — 4 авырлык',
-                            details: ['0.5, 1, 5, 10 кг', 'Тәмле кофе бөртекләре'],
+                            id: 'flavored-beans',
+                            title: 'Flavored Coffee Beans',
+                            details: ['Whole beans with added flavors for a premium aroma'],
                         },
                         {
-                            id: 'cat-5',
-                            title: '5 исем — 4 авырлык',
-                            details: ['0.5, 1, 5, 10 кг', 'Классик кофе бөртекләре'],
+                            id: 'classic-beans',
+                            title: 'Classic Coffee Beans',
+                            details: ['High-quality traditional whole beans'],
                         },
                         {
-                            id: 'cat-6',
-                            title: '12 исем — 2 авырлык',
-                            details: ['0.5, 1 кг', 'HoReCa һәм вендинг өчен продукция', '3-ен-1 кофе, чәй, какао'],
-                        },
-                        {
-                            id: 'cat-7',
-                            title: '4 исем — 4 төр упаковка',
-                            details: ['10, 25, 50, 100 данә', 'Төрле интенсивлыктагы капсулалар'],
-                        },
-                        {
-                            id: 'cat-8',
-                            title: '4 исем — 4 төр упаковка',
-                            details: ['10, 25, 50, 100 данә', 'Тәмләштерелгән капсулалар'],
-                        },
-                        {
-                            id: 'cat-9',
-                            title: '10 төрле упаковка',
-                            details: ['Бүләк җыелмалары'],
-                        },
-                        {
-                            id: 'cat-10',
-                            title: 'Реклама продукциясе',
-                            details: ['Брэндлы материаллар һәм аксессуарлар'],
+                            id: 'coffee-capsules',
+                            title: 'Coffee Capsules',
+                            details: ['Classic or flavored capsules with varying intensities'],
                         },
                     ],
-                    ctaLabel: 'Продукция каталогын карау',
+                    ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
                     title: 'Нигә безне сайлыйлар?',
@@ -678,7 +608,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                 title: 'Продукция',
                 description: 'Продукция турында мәгълүмат әзерләнә.',
             },
-            // CORRECTED: Updated to the detailed structure
             contact: {
                 hero: {
                     title: 'Әңгәмә башларга вакыт',

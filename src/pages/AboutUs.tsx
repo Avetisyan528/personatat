@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Box, Typography, Button, Paper, Grid, Card } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
+import {Box, Typography, Button, Paper, Grid, Card} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
+import {useLanguage} from '../context/LanguageContext';
 // Assuming an image for the About page hero section
 import aboutHeroImage from '../static/HomeBackground.webp';
 // Assuming icons for visual appeal
@@ -11,10 +11,10 @@ import PublicIcon from '@mui/icons-material/Public';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 
 const About: React.FC = () => {
-    const { translations } = useLanguage();
+    const {translations} = useLanguage();
     const navigate = useNavigate();
 
-    const { title, description } = translations.pages.about;
+    const {title, description} = translations.pages.about;
 
     const brandStory = {
         title: translations.header.navLabels.about,
@@ -25,29 +25,29 @@ const About: React.FC = () => {
     const missionAndVision = [
         {
             id: 'mv-1',
-            icon: <EmojiEventsIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
+            icon: <EmojiEventsIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
             title: 'Our Mission',
             description: 'To deliver the highest quality, professionally roasted coffee experiences to every customer, whether at home or in a professional setting (HoReCa).',
         },
         {
             id: 'mv-2',
-            icon: <InsightsIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
+            icon: <InsightsIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
             title: 'Our Vision',
             description: 'To be the leading national provider of specialized coffee blends and solutions, recognized for quality and customer focus.',
         },
         {
             id: 'mv-3',
-            icon: <PublicIcon color="secondary" sx={{ fontSize: 40, mb: 1 }} />,
+            icon: <PublicIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
             title: 'Sustainability Pledge',
             description: 'Committed to ethical sourcing and sustainable practices across our entire supply chain, from bean to cup.',
         },
     ];
 
     const keyStats = [
-        { id: 'stat-1', value: '2010', label: 'Founded in' },
-        { id: 'stat-2', value: '50+', label: 'SKUs Developed' },
-        { id: 'stat-3', value: '99%', label: 'Customer Satisfaction' },
-        { id: 'stat-4', value: '10M+', label: 'Cups Served' },
+        {id: 'stat-1', value: '2010', label: 'Founded in'},
+        {id: 'stat-2', value: '50+', label: 'SKUs Developed'},
+        {id: 'stat-3', value: '99%', label: 'Customer Satisfaction'},
+        {id: 'stat-4', value: '10M+', label: 'Cups Served'},
     ];
     // --- End Placeholder Content ---
 
@@ -70,14 +70,14 @@ const About: React.FC = () => {
                     padding: '80px 20px 120px',
                 }}
             >
-                <Box className="about-hero__content" sx={{ maxWidth: '900px', mx: 'auto', textAlign: 'left' }}>
-                    <Typography variant="overline" className="about-hero__eyebrow" sx={{ mb: 1, display: 'block' }}>
+                <Box className="about-hero__content" sx={{maxWidth: '900px', mx: 'auto', textAlign: 'left'}}>
+                    <Typography variant="overline" className="about-hero__eyebrow" sx={{mb: 1, display: 'block'}}>
                         PersonaTat
                     </Typography>
-                    <Typography variant="h2" component="h1" className="about-hero__title" sx={{ mb: 2 }}>
+                    <Typography variant="h2" component="h1" className="about-hero__title" sx={{mb: 2}}>
                         {brandStory.subtitle}
                     </Typography>
-                    <Typography variant="h5" className="about-hero__subtitle" sx={{ mb: 3, fontWeight: 300 }}>
+                    <Typography variant="h5" className="about-hero__subtitle" sx={{mb: 3, fontWeight: 300}}>
                         {brandStory.description}
                     </Typography>
                     <Button
@@ -92,16 +92,16 @@ const About: React.FC = () => {
             </Box>
 
             {/* 2. Mission and Vision Section (Styled like Brand Highlight Bullets) */}
-            <Box component="section" className="about-mission" sx={{ py: 8, px: 2, textAlign: 'center' }}>
-                <Typography variant="h3" component="h2" gutterBottom sx={{ mb: 6 }}>
+            <Box component="section" className="about-mission" sx={{py: 8, px: 2, textAlign: 'center'}}>
+                <Typography variant="h3" component="h2" gutterBottom sx={{mb: 6}}>
                     Our Core Principles
                 </Typography>
-                <Grid container spacing={4} maxWidth="lg" sx={{ mx: 'auto' }}>
+                <Grid container spacing={4} maxWidth="lg" sx={{mx: 'auto'}}>
                     {missionAndVision.map((item) => (
-                        <Grid size={{ xs: 12, md: 4 }} key={item.id}>
-                            <Paper className="mission-card" elevation={6} sx={{ p: 4, height: '100%' }}>
+                        <Grid size={{xs: 12, md: 4}} key={item.id}>
+                            <Paper className="mission-card" elevation={6} sx={{p: 4, height: '100%'}}>
                                 {item.icon}
-                                <Typography variant="h6" component="h3" gutterBottom sx={{ mt: 1 }}>
+                                <Typography variant="h6" component="h3" gutterBottom sx={{mt: 1}}>
                                     {item.title}
                                 </Typography>
                                 <Typography variant="body1" color="text.secondary">
@@ -114,17 +114,20 @@ const About: React.FC = () => {
             </Box>
 
             {/* 3. History and Stats Section (Styled like Brand Highlight Stats) */}
-            <Box component="section" className="about-history-stats" sx={{ py: 8, px: 2, backgroundColor: 'grey.100' }}>
-                <Box maxWidth="lg" sx={{ mx: 'auto' }}>
+            <Box component="section" className="about-history-stats" sx={{py: 8, px: 2, backgroundColor: 'grey.100'}}>
+                <Box maxWidth="lg" sx={{mx: 'auto'}}>
                     <Grid container spacing={4} alignItems="center">
-                        <Grid size={{ xs: 12, md: 6 }}>
-                            <Box sx={{ pr: { md: 4 } }}>
+                        <Grid size={{xs: 12, md: 6}}>
+                            <Box sx={{pr: {md: 4}}}>
                                 <Typography variant="h3" component="h2" gutterBottom>
-                                    <HistoryToggleOffIcon sx={{ mr: 1, verticalAlign: 'middle' }} color="secondary" />
+                                    <HistoryToggleOffIcon sx={{mr: 1, verticalAlign: 'middle'}} color="secondary"/>
                                     Our Journey
                                 </Typography>
-                                <Typography variant="body1" sx={{ mb: 3 }}>
-                                    PersonaTat began with a deep appreciation for the art of coffee roasting. From a small, local operation focused on perfect bean selection, we rapidly expanded our capabilities to serve both dedicated private connoisseurs and large-scale HoReCa partners across the nation.
+                                <Typography variant="body1" sx={{mb: 3}}>
+                                    PersonaTat began with a deep appreciation for the art of coffee roasting. From a
+                                    small, local operation focused on perfect bean selection, we rapidly expanded our
+                                    capabilities to serve both dedicated private connoisseurs and large-scale HoReCa
+                                    partners across the nation.
                                 </Typography>
                                 <Button
                                     variant="outlined"
@@ -136,15 +139,15 @@ const About: React.FC = () => {
                                 </Button>
                             </Box>
                         </Grid>
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid size={{xs: 12, md: 6}}>
                             <Grid container spacing={2}>
                                 {keyStats.map((stat) => (
-                                    <Grid size={{ xs: 12}} key={stat.id}>
-                                        <Card className="stat-card" elevation={4} sx={{ textAlign: 'center', p: 3 }}>
-                                            <Typography variant="h3" color="secondary" sx={{ fontWeight: 700 }}>
+                                    <Grid size={{xs: 12}} key={stat.id}>
+                                        <Card className="stat-card" elevation={4} sx={{textAlign: 'center', p: 3}}>
+                                            <Typography variant="h3" color="secondary" sx={{fontWeight: 700}}>
                                                 {stat.value}
                                             </Typography>
-                                            <Typography variant="body1" sx={{ mt: 0.5 }}>
+                                            <Typography variant="body1" sx={{mt: 0.5}}>
                                                 {stat.label}
                                             </Typography>
                                         </Card>
@@ -155,6 +158,10 @@ const About: React.FC = () => {
                     </Grid>
                 </Box>
             </Box>
+
+            <div className="bg-blue-500 p-4 text-white h-20">
+                asdaasd
+            </div>
         </Box>
     );
 };

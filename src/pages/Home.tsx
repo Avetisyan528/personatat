@@ -1,42 +1,106 @@
 import * as React from 'react';
-import { Button, Card, CardContent, Typography, Box, Paper } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
+import {Button, Card, CardContent, Typography, Box, Paper, CardMedia} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
+import {useLanguage} from '../context/LanguageContext';
 import heroImage from '../static/HomeBackground.webp';
+import {CATEGORY_IMAGES} from '../constants/categoryImages'
 
 const Home: React.FC = () => {
-    const { translations } = useLanguage();
+    const {translations} = useLanguage();
     const navigate = useNavigate();
 
-    const { hero, productShowcase, brandHighlight, finalCta } = translations.pages.home;
+    const {hero, productShowcase, brandHighlight, finalCta} = translations.pages.home;
 
     return (
-        <Box className="home-page">
 
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '96px',
+                padding: '0 0 48px 0',
+            }}
+        >
             <Box
                 component="section"
-                className="home-hero"
-                style={{
+                sx={{
                     position: 'relative',
+                    borderRadius: 0,
                     overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '620px',
+                    padding: '80px 9%',
                     backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%), url(${heroImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     paddingBottom: '100px',
+                    '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.3))',
+                        zIndex: 0,
+                    },
                 }}
             >
-                <Box className="home-hero__content">
-                    <Typography variant="overline" className="home-hero__eyebrow">
+                <Box
+                    sx={{
+                        position: 'relative',
+                        zIndex: 1,
+                        maxWidth: '620px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '20px',
+                    }}
+                >
+                    <Typography
+                        variant="overline"
+                        sx={{
+                            letterSpacing: '4px',
+                            color: 'rgba(255, 255, 255, 0.7)',
+                        }}
+                    >
                         PersonaTat
                     </Typography>
-                    <Typography variant="h2" className="home-hero__title">
+
+                    <Typography
+                        variant="h2"
+                        sx={{
+                            fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                            fontWeight: 700,
+                        }}
+                    >
                         {hero.title}
                     </Typography>
-                    <Typography variant="h5" className="home-hero__subtitle">
+
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            fontSize: 'clamp(1.15rem, 2.2vw, 1.6rem)',
+                            fontWeight: 500,
+                        }}
+                    >
                         {hero.subtitle}
                     </Typography>
-                    <Typography variant="body1" className="home-hero__description">
+
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: 'rgba(255, 255, 255, 0.85)',
+                        }}
+                    >
                         {hero.description}
                     </Typography>
-                    <Box className="home-hero__ctas">
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            gap: '16px',
+                            flexWrap: 'wrap',
+                            marginTop: '8px',
+                        }}
+                    >
                         {hero.ctas.map((cta) => (
                             <Button
                                 key={cta.id}
@@ -71,14 +135,58 @@ const Home: React.FC = () => {
                 </svg>
             </Box>
 
-            <Box component="section" className="home-products">
-                <Box className="section-heading">
+
+            <Box
+                component="section"
+                sx={{
+                    padding: '0 9%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '32px',
+                }}
+            >
+                <Box
+                    sx={{
+                        marginBottom: '32px',
+                        textAlign: 'center',
+                    }}
+                >
                     <Typography variant="h3">{productShowcase.title}</Typography>
                 </Box>
-                <Box className="home-products__grid">
+
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gap: '24px',
+                        gridTemplateColumns: 'repeat(3, 1fr)',
+                        gridTemplateRows: 'repeat(2, 1fr)',
+                    }}
+                >
                     {productShowcase.categories.map((category) => (
-                        <Card key={category.id} className="home-product-card" elevation={6}>
+
+                        <Card
+                            key={category.id}
+                            elevation={6}
+                            sx={{
+                                height: '100%',
+                                background: 'rgba(17, 17, 17, 0.85)',
+                                borderRadius: '20px',
+                                border: '1px solid rgba(255, 255, 255, 0.05)',
+                                backdropFilter: 'blur(6px)',
+                                '& ul': {
+                                    margin: 0,
+                                    paddingLeft: '18px',
+                                    color: 'rgba(255, 255, 255, 0.78)',
+                                },
+                            }}
+                        >
                             <CardContent>
+                                <CardMedia
+                                    component="img"
+                                    image={CATEGORY_IMAGES[category.id]}
+                                    alt={category.title}
+                                    sx={{ borderRadius: '20px 20px 0 0', height: 280, objectFit: 'cover', marginBottom: '12px' }}
+                                />
                                 <Typography variant="h6" component="h3" gutterBottom>
                                     {category.title}
                                 </Typography>
@@ -87,17 +195,25 @@ const Home: React.FC = () => {
                                         <li key={`${category.id}-detail-${index}`}>{detail}</li>
                                     ))}
                                 </ul>
+                                <Typography variant="h6" component="h3" gutterBottom>
+                                    See More
+                                </Typography>
                             </CardContent>
                         </Card>
                     ))}
                 </Box>
 
+
                 <Button
-                    className="home-products__cta"
                     variant="outlined"
                     color="secondary"
                     size="large"
                     onClick={() => navigate('/products')}
+                    sx={{
+                        alignSelf: 'center',
+                        borderRadius: '999px',
+                        paddingInline: '32px',
+                    }}
                 >
                     {productShowcase.ctaLabel}
                 </Button>
@@ -113,7 +229,7 @@ const Home: React.FC = () => {
                 <Box className="home-brand__reasons">
                     {brandHighlight.bullets.map((bullet) => (
                         <Paper key={bullet.id} className="home-brand__card" elevation={4}>
-                            <Box sx={{ p: 3 }}>
+                            <Box sx={{p: 3}}>
                                 <Typography variant="h6" component="h3">
                                     {bullet.title}
                                 </Typography>
