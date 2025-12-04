@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import {Button, Card, CardContent, Typography, Box, Paper, CardMedia} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useLanguage} from '../context/LanguageContext';
 import heroImage from '../static/HomeBackground.webp';
 import {CATEGORY_IMAGES} from '../constants/categoryImages'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const Home: React.FC = () => {
+
     const {translations} = useLanguage();
     const navigate = useNavigate();
 
@@ -176,17 +179,36 @@ const Home: React.FC = () => {
                                     component="img"
                                     image={CATEGORY_IMAGES[category.id]}
                                     alt={category.title}
-                                    sx={{ borderRadius: '20px 20px 0 0', height: 280, objectFit: 'cover', marginBottom: '12px' }}
+                                    sx={{
+                                        borderRadius: '20px 20px 0 0',
+                                        height: 280,
+                                        objectFit: 'cover',
+                                        marginBottom: '12px'
+                                    }}
                                 />
-                                <Typography variant="h6" component="h3" gutterBottom>
+                                <Typography variant="h4" component="h3" gutterBottom>
                                     {category.title}
                                 </Typography>
                                 <Typography variant="body1" component="h3" gutterBottom>
                                     {category.details}
                                 </Typography>
-                                <Typography variant="h6" component="h3" gutterBottom>
+                                <Typography
+                                    variant="h6"
+                                    onClick={() => navigate('/products')}
+                                    gutterBottom
+                                    color="secondary"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        textDecoration: 'none',
+                                        cursor: 'pointer',
+                                    }}
+                                >
                                     See More
+                                    <ArrowForwardIcon sx={{ fontSize: '1.2em' }} />
                                 </Typography>
+
                             </CardContent>
                         </Card>
                     ))}
