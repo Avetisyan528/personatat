@@ -1,12 +1,18 @@
 import * as React from 'react';
 import {Box, Divider, Typography} from '@mui/material';
 import {Link as RouterLink} from 'react-router-dom';
-import {useLanguage} from '../../context/LanguageContext';
+import {useLanguage, FOOTER_LINKS} from '../../context/LanguageContext';
 import logo from "../../static/LogoTransparent.png";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useTheme } from '@mui/material/styles';
+
+const socialLinks = [
+    { icon: InstagramIcon, url: "https://instagram.com/personatat" },
+    { icon: FacebookIcon, url: "https://www.facebook.com/profile.php?id=61583886507459" },
+    { icon: YouTubeIcon, url: "https://youtube.com/personatat" },
+];
 
 const Footer: React.FC = () => {
     const {translations} = useLanguage();
@@ -42,16 +48,18 @@ const Footer: React.FC = () => {
                         <Box component="img" src={logo} alt={translations.header.title} sx={{maxHeight: 40}}/>
                     </Box>
                     <Typography variant="body1" sx={{my: 2}}>
-                        Премиальный кофе для ценителей качества и вкуса
+                        {footer.description}
                     </Typography>
 
-                    {/* Social Icons */}
-                    <Box sx={{display: 'flex', gap: 1}}>
-                        {[InstagramIcon, FacebookIcon, YouTubeIcon].map((Icon, index) => (
+
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                        {socialLinks.map(({ icon: Icon, url }, index) => (
                             <Box
                                 key={index}
-                                component={RouterLink}
-                                to="/"
+                                component="a" // use <a> for external links
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 sx={{
                                     width: 40,
                                     height: 40,
@@ -66,7 +74,7 @@ const Footer: React.FC = () => {
                                     },
                                 }}
                             >
-                                <Icon/>
+                                <Icon />
                             </Box>
                         ))}
                     </Box>
@@ -74,12 +82,60 @@ const Footer: React.FC = () => {
 
                 <Box sx={{flex: '1 1'}}>
                     <Typography variant="h6">{footer.productsHeading}</Typography>
+                    {FOOTER_LINKS.products.map(link => (
+                        <Typography
+                            key={link.key}
+                            component={RouterLink} // use RouterLink for internal links
+                            to={link.path}
+                            sx={{
+                                display: 'block',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                my: 0.5,
+                                '&:hover': { textDecoration: 'underline' },
+                            }}
+                        >
+                            {footer.productLabels[link.key]}
+                        </Typography>
+                    ))}
                 </Box>
                 <Box sx={{flex: '1 1'}}>
                     <Typography variant="h6">{footer.companyHeading}</Typography>
+                    {FOOTER_LINKS.company.map(link => (
+                        <Typography
+                            key={link.key}
+                            component={RouterLink} // use RouterLink for internal links
+                            to={link.path}
+                            sx={{
+                                display: 'block',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                my: 0.5,
+                                '&:hover': { textDecoration: 'underline' },
+                            }}
+                        >
+                            {footer.companyLabels[link.key]}
+                        </Typography>
+                    ))}
                 </Box>
                 <Box sx={{flex: '1 1'}}>
                     <Typography variant="h6">{footer.contactHeading}</Typography>
+                    {FOOTER_LINKS.contact.map(link => (
+                        <Typography
+                            key={link.key}
+                            component={RouterLink} // use RouterLink for internal links
+                            to={link.path}
+                            sx={{
+                                display: 'block',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                my: 0.5,
+                                '&:hover': { textDecoration: 'underline' },
+                            }}
+                        >
+                            {footer.contactLabels[link.key]}
+                        </Typography>
+                    ))}
                 </Box>
             </Box>
 

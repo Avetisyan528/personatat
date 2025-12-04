@@ -11,6 +11,28 @@ export const NAV_LINKS: Array<{ key: NavKey; path: string }> = [
     {key: 'products', path: '/products'},
 ];
 
+export type FooterContactKey = 'email' | 'phone' | 'address';
+export type FooterCompanyKey = 'about' | 'careers' | 'team';
+export type FooterProductKey = 'beans' | 'sticks' | 'assorted';
+
+export const FOOTER_LINKS = {
+    contact: [
+        {key: 'email' as FooterContactKey, path: 'mailto:hello@company.com'},
+        {key: 'phone' as FooterContactKey, path: 'tel:+123456789'},
+        {key: 'address' as FooterContactKey, path: '/contact#address'},
+    ],
+    company: [
+        {key: 'about' as FooterCompanyKey, path: '/about'},
+        {key: 'careers' as FooterCompanyKey, path: '/careers'},
+        {key: 'team' as FooterCompanyKey, path: '/team'},
+    ],
+    products: [
+        {key: 'beans' as FooterProductKey, path: '/products/beans'},
+        {key: 'sticks' as FooterProductKey, path: '/products/sticks'},
+        {key: 'assorted' as FooterProductKey, path: '/products/assorted'},
+    ],
+};
+
 export const availableLanguages: Language[] = ['en', 'ru', 'tt'];
 
 type HeaderTranslations = {
@@ -76,20 +98,19 @@ type FinalCtaTranslations = {
     note: string;
 };
 
-type FooterTranslations = {
+
+export type FooterTranslations = {
     description: string;
 
     contactHeading: string;
-    companyHeading: string;
-    productsHeading: string;
+    contactLabels: Record<FooterContactKey, string>;
 
-    phoneLabel: string;
-    phoneValue: string;
-    emailLabel: string;
-    emailValue: string;
-    locationLabel: string;
-    locationValue: string;
-    hotlineNote: string;
+    companyHeading: string;
+    companyLabels: Record<FooterCompanyKey, string>;
+
+    productsHeading: string;
+    productLabels: Record<FooterProductKey, string>;
+
     rights: string;
 };
 
@@ -127,7 +148,6 @@ type ContactPageTranslations = {
     };
 };
 
-// Renamed for clarity, since the old PageCopy was only used for basic pages
 type SimplePageCopy = {
     title: string;
     description: string;
@@ -299,16 +319,28 @@ const TRANSLATIONS: Record<Language, Translations> = {
         },
         footer: {
             description: 'Craft coffee solutions for homes, cafés, restaurants, and vending.',
+
             contactHeading: 'Stay Connected',
-            companyHeading: 'Stay Connected',
-            productsHeading: 'Stay Connected',
-            phoneLabel: 'Hotline',
-            phoneValue: '8 800 600 5635',
-            emailLabel: 'Email',
-            emailValue: 'info@personatat.com',
-            locationLabel: 'Location',
-            locationValue: 'Naberezhnye Chelny, Russia',
-            hotlineNote: 'Hotline available throughout Russia.',
+            contactLabels: {
+                email: 'Email Us',
+                phone: 'Call Us',
+                address: 'Our Address',
+            },
+
+            companyHeading: 'Company',
+            companyLabels: {
+                about: 'About Us',
+                careers: 'Careers',
+                team: 'Team',
+            },
+
+            productsHeading: 'Products',
+            productLabels: {
+                beans: 'Coffee Beans',
+                sticks: 'Coffee Sticks',
+                assorted: 'Assorted Packs',
+            },
+
             rights: '© PersonaTat. All rights reserved.',
         },
     },
@@ -458,17 +490,29 @@ const TRANSLATIONS: Record<Language, Translations> = {
             },
         },
         footer: {
-            description: 'Решения для кофе дома, в кафе, ресторанах и вендинге.',
-            contactHeading: 'Будем на связи',
-            companyHeading:  'Будем на связи',
-            productsHeading: 'Будем на связи',
-            phoneLabel: 'Горячая линия',
-            phoneValue: '8 800 600 5635',
-            emailLabel: 'Электронная почта',
-            emailValue: 'info@personatat.com',
-            locationLabel: 'Адрес',
-            locationValue: 'г. Набережные Челны, Россия',
-            hotlineNote: 'Горячая линия работает по всей России.',
+            description: 'Крафтовые решения для кофе для дома, кафе, ресторанов и вендинга.',
+
+            contactHeading: 'Оставайтесь на связи',
+            contactLabels: {
+                email: 'Напишите нам',
+                phone: 'Позвоните нам',
+                address: 'Наш адрес',
+            },
+
+            companyHeading: 'Компания',
+            companyLabels: {
+                about: 'О нас',
+                careers: 'Карьера',
+                team: 'Команда',
+            },
+
+            productsHeading: 'Продукты',
+            productLabels: {
+                beans: 'Кофейные зерна',
+                sticks: 'Кофейные стики',
+                assorted: 'Ассорти наборы',
+            },
+
             rights: '© PersonaTat. Все права защищены.',
         },
     },
@@ -620,18 +664,30 @@ const TRANSLATIONS: Record<Language, Translations> = {
             },
         },
         footer: {
-            description: 'Өй, кафе, ресторан һәм вендинг өчен кофе чишелешләре.',
-            contactHeading: 'Бәйләнештә калыйк',
-            companyHeading: 'Бәйләнештә калыйк',
-            productsHeading: 'Бәйләнештә калыйк',
-            phoneLabel: 'Кайнар линия',
-            phoneValue: '8 800 600 5635',
-            emailLabel: 'Электрон почта',
-            emailValue: 'info@personatat.com',
-            locationLabel: 'Урын',
-            locationValue: 'Россия, Набережные Челны',
-            hotlineNote: 'Кайнар линия Россия буенча эшли.',
-            rights: '© PersonaTat. Барлык хокуклар сакланган.',
+            description: 'Өйгә, кафе, рестораннар һәм вендинг өчен кофе чишелешләре.',
+
+            contactHeading: 'Элемтәдә булыгыз',
+            contactLabels: {
+                email: 'Безгә язырга',
+                phone: 'Безгә шалтыратыгыз',
+                address: 'Безнең адрес',
+            },
+
+            companyHeading: 'Компания',
+            companyLabels: {
+                about: 'Без турында',
+                careers: 'Карьер мөмкинлекләре',
+                team: 'Команда',
+            },
+
+            productsHeading: 'Продукция',
+            productLabels: {
+                beans: 'Кофе бөртекләре',
+                sticks: 'Кофе стиктары',
+                assorted: 'Катнаш пакетлар',
+            },
+
+            rights: '© PersonaTat. Бөтен хокуклар сакланган.',
         },
     },
 };
