@@ -51,17 +51,13 @@ type BrandReason = {
     description: string;
 };
 
-type BrandStat = {
-    id: string;
-    value: string;
-    label: string;
-};
 
 type BrandHighlightTranslations = {
-    title: string;
+    about: string;
+    titleTop: string;
+    titleBottom: string;
     description: string;
     bullets: BrandReason[];
-    stats: BrandStat[];
     ctaLabel: string;
 };
 
@@ -79,8 +75,6 @@ type FinalCtaTranslations = {
     buttons: FinalCtaButton[];
     note: string;
 };
-
-// Removed PageCopy since it's now split into SimplePageCopy and ContactPageTranslations
 
 type FooterTranslations = {
     description: string;
@@ -147,7 +141,6 @@ type Translations = {
         };
         about: SimplePageCopy;
         products: SimplePageCopy;
-        // Correctly use the detailed type for contact
         contact: ContactPageTranslations;
     };
     footer: FooterTranslations;
@@ -213,7 +206,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
-                    title: 'Why Choose PersonaTat?',
+                    about: 'About Brand',
+                    titleTop: 'Why Choose PersonaTat?',
+                    titleBottom: 'Why Choose PersonaTat?',
                     description:
                         'We deliver a complete range of coffee products for home, business, and special occasions.',
                     bullets: [
@@ -232,16 +227,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                             title: 'For business',
                             description: 'Tailored solutions for cafés, restaurants, and vending.',
                         },
-                        {
-                            id: 'bullet-4',
-                            title: 'Gift sets',
-                            description: 'Elegant packaging perfect for corporate gifts.',
-                        },
-                    ],
-                    stats: [
-                        {id: 'stat-1', value: '50+', label: 'Product SKUs'},
-                        {id: 'stat-2', value: '10', label: 'Product categories'},
-                        {id: 'stat-3', value: '100%', label: 'Quality control'},
                     ],
                     ctaLabel: 'Learn About Us',
                 },
@@ -380,7 +365,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
-                    title: 'Почему выбирают нас?',
+                    about: 'О БРЕНДЕ',
+                    titleTop: 'Почему выбирают нас?',
+                    titleBottom: 'Почему выбирают нас?',
                     description:
                         'Мы предлагаем полный спектр кофейной продукции для дома, бизнеса и особых случаев.',
                     bullets: [
@@ -399,16 +386,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                             title: 'Для бизнеса',
                             description: 'Специальные решения для кафе, ресторанов и вендинга.',
                         },
-                        {
-                            id: 'bullet-4',
-                            title: 'Подарочные наборы',
-                            description: 'Элегантная упаковка для корпоративных подарков.',
-                        },
-                    ],
-                    stats: [
-                        {id: 'stat-1', value: '50+', label: 'Наименований продукции'},
-                        {id: 'stat-2', value: '10', label: 'Категорий товаров'},
-                        {id: 'stat-3', value: '100%', label: 'Контроль качества'},
                     ],
                     ctaLabel: 'Узнать о компании',
                 },
@@ -547,7 +524,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     ctaLabel: 'View All Products',
                 },
                 brandHighlight: {
-                    title: 'Нигә безне сайлыйлар?',
+                    about: 'О БРЕНДЕ',
+                    titleTop: 'Нигә безне сайлыйлар?',
+                    titleBottom: 'Нигә безне сайлыйлар?',
                     description:
                         'Өй, бизнес һәм махсус чаралар өчен тулы кофей продукциясен тәкъдим итәбез.',
                     bullets: [
@@ -566,16 +545,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
                             title: 'Бизнес өчен',
                             description: 'Кафе, ресторан һәм вендинг өчен махсус чишелешләр.',
                         },
-                        {
-                            id: 'bullet-4',
-                            title: 'Бүләк җыелмалары',
-                            description: 'Корпоратив бүләкләр өчен зәвыклы упаковка.',
-                        },
-                    ],
-                    stats: [
-                        {id: 'stat-1', value: '50+', label: 'Продукция исемнәре'},
-                        {id: 'stat-2', value: '10', label: 'Товар категорияләре'},
-                        {id: 'stat-3', value: '100%', label: 'Сыйфат контроле'},
                     ],
                     ctaLabel: 'Компания турында',
                 },

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import {Button, Card, CardContent, Typography, Box, Paper, CardMedia} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useLanguage} from '../context/LanguageContext';
 import heroImage from '../static/HomeBackground.webp';
 import {CATEGORY_IMAGES} from '../constants/categoryImages'
+import {HOMEABOUT_ICONS} from '../constants/HomeAboutIcons'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import HomeAboutUs from '../static/HomeAboutUs.avif';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Home: React.FC = () => {
 
@@ -206,7 +208,7 @@ const Home: React.FC = () => {
                                     }}
                                 >
                                     See More
-                                    <ArrowForwardIcon sx={{ fontSize: '1.2em' }} />
+                                    <ArrowForwardIcon sx={{fontSize: '1.2em'}}/>
                                 </Typography>
 
                             </CardContent>
@@ -230,42 +232,178 @@ const Home: React.FC = () => {
                 </Button>
             </Box>
 
-            <Box component="section" className="home-brand">
-                <Box className="home-brand__intro">
-                    <Typography variant="h3">{brandHighlight.title}</Typography>
-                    <Typography variant="body1" className="home-brand__description">
-                        {brandHighlight.description}
-                    </Typography>
-                </Box>
-                <Box className="home-brand__reasons">
-                    {brandHighlight.bullets.map((bullet) => (
-                        <Paper key={bullet.id} className="home-brand__card" elevation={4}>
-                            <Box sx={{p: 3}}>
-                                <Typography variant="h6" component="h3">
-                                    {bullet.title}
-                                </Typography>
-                                <Typography variant="body2">{bullet.description}</Typography>
-                            </Box>
-                        </Paper>
-                    ))}
+
+            <Box
+                component="section"
+                color="primary"
+                display="flex"
+                sx={{
+                    display: 'flex',
+                    width: '100%',
+                    padding: '0 9%',
+                }}
+            >
+                <Box
+                    sx={{
+                        flex: 1,
+                        my: 'auto',
+                        mr: 20
+                    }}
+                >
+
+                    <Box
+                        sx={{
+                            overflow: 'hidden',
+                            border: (theme) => `2px solid ${theme.palette.secondary.main}`,
+                            borderRadius: '20px',
+                        }}
+                    >
+                        <Box
+                            component="img"
+                            src={HomeAboutUs}
+                            alt="HomeAboutUs"
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                            }}
+                        />
+                    </Box>
+
                 </Box>
 
-                <Box className="home-brand__stats">
-                    {brandHighlight.stats.map((stat) => (
-                        <Paper key={stat.id} className="home-brand__stat" elevation={6}>
-                            <Typography variant="h3">{stat.value}</Typography>
-                            <Typography variant="body2">{stat.label}</Typography>
-                        </Paper>
-                    ))}
+                <Box
+                    sx={{
+                        flex: 1,
+                    }}>
+
+                    <Paper
+                        sx={(theme) => ({
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 1,
+                            px: 3,
+                            py: 1,
+                            borderRadius: 7,
+                            mb: 4,
+                            fontSize: '0.8rem',
+                            fontWeight: 'bold',
+
+                            backgroundColor: theme.palette.secondary.main,
+                            color: theme.palette.secondary.contrastText,
+                        })}
+                        elevation={0}
+                    >
+                        <InfoIcon fontSize="small"/>
+                        {brandHighlight.about}
+                    </Paper>
+
+                    <Typography
+                        variant="h3"
+                        sx={(theme) => ({
+                            fontSize: '2.5rem',
+                            fontWeight: 'bold',
+                            mb: 3,
+                            lineHeight: 1.2,
+                            color: theme.palette.primary.contrastText,
+                            '& span': {
+                                color: theme.palette.secondary.main,
+                            },
+                        })}
+                    >
+                        {brandHighlight.titleTop}<br/>
+                        <Box component="span">{brandHighlight.titleBottom}</Box>
+                    </Typography>
+
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            mb: 4,
+                        }}
+                    >
+                        {brandHighlight.description}
+                    </Typography>
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 2,
+                            mt: 0,
+                        }}
+                    >
+                        {brandHighlight.bullets.map((bullet) => {
+                            const Icon = HOMEABOUT_ICONS[bullet.id];
+
+                            return (
+                                <Paper
+                                    key={bullet.id}
+                                    sx={{
+                                        border: (theme) => `2px solid ${theme.palette.secondary.main}`,
+                                        borderRadius: '10px',
+                                        p: 2,
+                                        display: 'flex',
+                                        alignItems: 'flex-start',
+                                        gap: 2,
+                                    }}
+                                    elevation={4}
+                                >
+                                    <Box
+                                        sx={(theme) => ({
+                                            width: 48,
+                                            height: 48,
+                                            borderRadius: 2,
+                                            backgroundColor: theme.palette.secondary.main,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        })}
+                                    >
+                                        <Icon sx={{ fontSize: 28, color: '#000' }} />
+                                    </Box>
+
+                                    <Box>
+                                        <Typography
+                                            variant="h6"
+                                            component="h3"
+                                            color="secondary"
+                                            sx={{
+                                                fontSize: '1.1rem',
+                                                fontWeight: 'bold',
+                                                mb: 0.5,
+                                            }}
+                                        >
+                                            {bullet.title}
+                                        </Typography>
+
+                                        <Typography variant="body2">
+                                            {bullet.description}
+                                        </Typography>
+                                    </Box>
+                                </Paper>
+                            );
+                        })}
+
+
+                        <Button
+                            variant="contained"
+                            onClick={() => navigate('/about')}
+                            color="secondary"
+                            sx={{
+                                justifySelf: 'start',
+                                fontWeight: 'bold',
+                                textTransform: 'none',
+                                borderRadius: 4,
+                                py: 1.5,
+                                px: 3,
+                                mt: 4,
+                                width: '50%',
+                            }}
+                        >
+                            {brandHighlight.ctaLabel}
+                        </Button>
+                    </Box>
                 </Box>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    size="large"
-                    onClick={() => navigate('/about')}
-                >
-                    {brandHighlight.ctaLabel}
-                </Button>
+
             </Box>
 
             <Paper component="section" className="home-final-cta" elevation={8}>
