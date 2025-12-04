@@ -78,7 +78,11 @@ type FinalCtaTranslations = {
 
 type FooterTranslations = {
     description: string;
+
     contactHeading: string;
+    companyHeading: string;
+    productsHeading: string;
+
     phoneLabel: string;
     phoneValue: string;
     emailLabel: string;
@@ -89,7 +93,6 @@ type FooterTranslations = {
     rights: string;
 };
 
-// Add new types for the Contact page structure
 type ContactInfoItem = {
     title: string;
     value: string;
@@ -297,6 +300,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
         footer: {
             description: 'Craft coffee solutions for homes, cafés, restaurants, and vending.',
             contactHeading: 'Stay Connected',
+            companyHeading: 'Stay Connected',
+            productsHeading: 'Stay Connected',
             phoneLabel: 'Hotline',
             phoneValue: '8 800 600 5635',
             emailLabel: 'Email',
@@ -455,6 +460,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
         footer: {
             description: 'Решения для кофе дома, в кафе, ресторанах и вендинге.',
             contactHeading: 'Будем на связи',
+            companyHeading:  'Будем на связи',
+            productsHeading: 'Будем на связи',
             phoneLabel: 'Горячая линия',
             phoneValue: '8 800 600 5635',
             emailLabel: 'Электронная почта',
@@ -615,6 +622,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
         footer: {
             description: 'Өй, кафе, ресторан һәм вендинг өчен кофе чишелешләре.',
             contactHeading: 'Бәйләнештә калыйк',
+            companyHeading: 'Бәйләнештә калыйк',
+            productsHeading: 'Бәйләнештә калыйк',
             phoneLabel: 'Кайнар линия',
             phoneValue: '8 800 600 5635',
             emailLabel: 'Электрон почта',

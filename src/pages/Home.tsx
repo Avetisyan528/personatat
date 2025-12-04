@@ -14,7 +14,7 @@ const Home: React.FC = () => {
     const {translations} = useLanguage();
     const navigate = useNavigate();
 
-    const {hero, productShowcase, brandHighlight, finalCta} = translations.pages.home;
+    const {hero, productShowcase, brandHighlight} = translations.pages.home;
 
     return (
 
@@ -405,7 +405,7 @@ const Home: React.FC = () => {
                 </Box>
 
             </Box>
-
+{/*
             <Paper component="section" className="home-final-cta" elevation={8}>
                 <Box className="home-final-cta__content">
                     <Typography variant="h3">{finalCta.title}</Typography>
@@ -437,7 +437,7 @@ const Home: React.FC = () => {
                         {finalCta.note}
                     </Typography>
                 </Box>
-            </Paper>
+            </Paper>*/}
         </Box>
     );
 };
