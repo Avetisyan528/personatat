@@ -23,6 +23,7 @@ const Footer: React.FC = () => {
         <Box
             component="footer"
             sx={{
+                borderTop: (theme) => `2px solid ${theme.palette.secondary.main}`,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
@@ -123,7 +124,7 @@ const Footer: React.FC = () => {
                     {FOOTER_LINKS.contact.map(link => (
                         <Typography
                             key={link.key}
-                            component={RouterLink} // use RouterLink for internal links
+                            component={RouterLink}
                             to={link.path}
                             sx={{
                                 display: 'block',

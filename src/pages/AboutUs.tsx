@@ -2,9 +2,7 @@ import * as React from 'react';
 import {Box, Typography, Button, Paper, Grid, Card} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useLanguage} from '../context/LanguageContext';
-// Assuming an image for the About page hero section
 import aboutHeroImage from '../static/HomeBackground.webp';
-// Assuming icons for visual appeal
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import InsightsIcon from '@mui/icons-material/Insights';
 import PublicIcon from '@mui/icons-material/Public';
@@ -49,28 +47,38 @@ const About: React.FC = () => {
         {id: 'stat-3', value: '99%', label: 'Customer Satisfaction'},
         {id: 'stat-4', value: '10M+', label: 'Cups Served'},
     ];
-    // --- End Placeholder Content ---
 
     return (
-        <Box className="about-page">
-            {/* 1. About Hero Section (Styled like Home Hero) */}
+        <Box>
             <Box
                 component="section"
-                className="about-hero"
                 sx={{
                     position: 'relative',
+                    borderRadius: 0,
                     overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '620px',
+                    padding: '80px 9%',
                     backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%), url(${aboutHeroImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    minHeight: '450px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: 'white',
-                    padding: '80px 20px 120px',
+                    paddingBottom: '100px',
+                    '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.3))',
+                        zIndex: 0,
+                    },
                 }}
             >
-                <Box className="about-hero__content" sx={{maxWidth: '900px', mx: 'auto', textAlign: 'left'}}>
+                <Box sx={{
+                    maxWidth: '900px',
+                    mx: 'auto',
+                    textAlign: 'left',
+                    zIndex: 1,
+                }}>
                     <Typography variant="overline" className="about-hero__eyebrow" sx={{mb: 1, display: 'block'}}>
                         PersonaTat
                     </Typography>
@@ -89,9 +97,27 @@ const About: React.FC = () => {
                         {translations.pages.home.hero.ctas.find(cta => cta.path === '/products')?.label || 'View Products'}
                     </Button>
                 </Box>
+                <svg
+                    viewBox="0 0 1440 320"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                    style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100px',
+                        zIndex: 1,
+                    }}
+                >
+                    <path
+                        fill="#000000"
+                        fillOpacity="1"
+                        d="M0,96L80,112C160,128,320,160,480,160C640,160,800,128,960,128C1120,128,1280,160,1360,176L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+                    ></path>
+                </svg>
             </Box>
 
-            {/* 2. Mission and Vision Section (Styled like Brand Highlight Bullets) */}
             <Box component="section" className="about-mission" sx={{py: 8, px: 2, textAlign: 'center'}}>
                 <Typography variant="h3" component="h2" gutterBottom sx={{mb: 6}}>
                     Our Core Principles
@@ -113,8 +139,7 @@ const About: React.FC = () => {
                 </Grid>
             </Box>
 
-            {/* 3. History and Stats Section (Styled like Brand Highlight Stats) */}
-            <Box component="section" className="about-history-stats" sx={{py: 8, px: 2, backgroundColor: 'grey.100'}}>
+            <Box component="section" sx={{py: 8, px: 2}}>
                 <Box maxWidth="lg" sx={{mx: 'auto'}}>
                     <Grid container spacing={4} alignItems="center">
                         <Grid size={{xs: 12, md: 6}}>
@@ -158,10 +183,6 @@ const About: React.FC = () => {
                     </Grid>
                 </Box>
             </Box>
-
-            <div className="bg-blue-500 p-4 text-white h-20">
-                asdaasd
-            </div>
         </Box>
     );
 };
