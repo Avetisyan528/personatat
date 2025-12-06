@@ -222,8 +222,8 @@ const Contact: React.FC = () => {
                                                 variant="contained"
                                                 color="secondary"
                                                 size="large"
-                                                sx={{ mt: 2, borderRadius: 20, }}
-                                                endIcon={<SendIcon />}
+                                                sx={{mt: 2, borderRadius: 20,}}
+                                                endIcon={<SendIcon/>}
                                             >
                                                 {form.buttonLabel}
                                             </Button>
@@ -291,7 +291,7 @@ const Contact: React.FC = () => {
                                     </Paper>
                                 </Grid>
                             </Grid>
-                            <Grid size={{md: 12}}>
+                            {/*<Grid size={{md: 12}}>
                                 <Grid sx={{
                                     pt: 2,
                                     backgroundColor: theme.palette.secondary.main,
@@ -313,6 +313,38 @@ const Contact: React.FC = () => {
 
                                     </Paper>
                                 </Grid>
+                            </Grid>*/}
+                            <Grid
+                                size={{md: 12}}
+                                sx={{
+                                    p: 0,
+                                    border: `2px solid ${theme.palette.secondary.main}`,
+                                    borderRadius: '30px',
+                                    overflow: 'hidden',
+                                    backgroundColor: theme.palette.secondary.main,
+                                }}
+                            >
+                                <Paper elevation={0} sx={{p: 2,}}>
+                                    <Box
+                                        sx={{
+                                            p: 0,
+                                            border: `2px solid ${theme.palette.primary.main}`,
+                                            borderRadius: '30px',
+                                            overflow: 'hidden',
+                                            backgroundColor: theme.palette.secondary.main,
+                                        }}
+                                    >
+
+                                        <iframe
+                                            title="google-maps-location"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2666.2319733951426!2d52.40932567708489!3d55.71136769518157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43e01e7a9b98855d%3A0x597d2af98dc95be4!2sKhlebnyy%20Proyezd%2C%2021%2C%20Naberezhnye%20Chelny%2C%20Respublika%20Tatarstan%2C%20Russia%2C%20423814!5e1!3m2!1sen!2sam!4v1765001957326!5m2!1sen!2sam"
+                                            width="100%"
+                                            style={{border: 0, aspectRatio: '16 / 9'}}
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                        />
+                                    </Box>
+                                </Paper>
                             </Grid>
                         </Grid>
                     </Grid>
