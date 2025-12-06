@@ -286,7 +286,7 @@ const Home: React.FC = () => {
                             px: 3,
                             py: 1,
                             borderRadius: 7,
-                            mb: 4,
+                            mb: 4   ,
                             fontSize: '0.8rem',
                             fontWeight: 'bold',
 
