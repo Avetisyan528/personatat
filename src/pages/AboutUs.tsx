@@ -1,29 +1,26 @@
 import * as React from 'react';
-import {Box, Typography, Button, Paper, Grid, Card, TextField, CardContent, useTheme} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import {Box, Typography, Paper, Grid, useTheme} from '@mui/material';
 import {useLanguage} from '../context/LanguageContext';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import InsightsIcon from '@mui/icons-material/Insights';
-import PublicIcon from '@mui/icons-material/Public';
-import {LocationOn, MailOutline, Phone} from "@mui/icons-material";
+//import {LocationOn, MailOutline, Phone} from "@mui/icons-material";
 import AboutUs from "../static/AboutUs.avif";
 import {alpha} from '@mui/material/styles';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 
 
-interface ContactFormState {
+/*interface ContactFormState {
     name: string;
     email: string;
     subject: string;
     message: string;
-}
+}*/
 
 const About: React.FC = () => {
     const theme = useTheme();
     const {translations} = useLanguage();
-    const navigate = useNavigate();
+   // const navigate = useNavigate();
 
-    const {title, description} = translations.pages.about;
+    //const {title, description} = translations.pages.about;
+/*
 
     const brandStory = {
         title: translations.header.navLabels.about,
@@ -51,26 +48,27 @@ const About: React.FC = () => {
             description: 'Committed to ethical sourcing and sustainable practices across our entire supply chain, from bean to cup.',
         },
     ];
+*/
 
-    const keyStats = [
+    /*const keyStats = [
         {id: 'stat-1', value: '2010', label: 'Founded in'},
         {id: 'stat-2', value: '50+', label: 'SKUs Developed'},
         {id: 'stat-3', value: '99%', label: 'Customer Satisfaction'},
         {id: 'stat-4', value: '10M+', label: 'Cups Served'},
-    ];
+    ];*/
 
     /*Remove Later*/
 
     // Destructure contact page translation segments
-    const {hero, form, info} = translations.pages.contact;
+    const {info} = translations.pages.contact;
 
-    const [formData, setFormData] = React.useState<ContactFormState>({
+  /*  const [formData, setFormData] = React.useState<ContactFormState>({
         name: '',
         email: '',
         subject: '',
         message: '',
-    });
-
+    });*/
+/*
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
@@ -84,14 +82,14 @@ const About: React.FC = () => {
         console.log('Form Submitted:', formData);
         alert(form.submissionMessage); // Display a placeholder alert
         setFormData({name: '', email: '', subject: '', message: ''}); // Clear form
-    };
+    };*/
 
-    const contactInfo = [
+   /* const contactInfo = [
         {id: 1, icon: <MailOutline color="primary"/>, title: info.email.title, value: info.email.value},
         {id: 2, icon: <Phone color="primary"/>, title: info.phone.title, value: info.phone.value},
         {id: 3, icon: <LocationOn color="primary"/>, title: info.address.title, value: info.address.value},
     ];
-
+*/
 
     return (
         <Box>
