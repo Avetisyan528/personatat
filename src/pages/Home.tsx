@@ -8,6 +8,7 @@ import {HOMEABOUT_ICONS} from '../constants/HomeAboutIcons'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import HomeAboutUs from '../static/HomeAboutUs.avif';
 import InfoIcon from '@mui/icons-material/Info';
+import theme from "../theme";
 
 const Home: React.FC = () => {
 
@@ -185,7 +186,8 @@ const Home: React.FC = () => {
                                         borderRadius: '20px 20px 0 0',
                                         height: 280,
                                         objectFit: 'cover',
-                                        marginBottom: '12px'
+                                        marginBottom: '12px',
+                                        border: (theme) => `2px solid ${theme.palette.secondary.main}`,
                                     }}
                                 />
                                 <Typography variant="h4" component="h3" gutterBottom>
@@ -339,13 +341,14 @@ const Home: React.FC = () => {
                                     key={bullet.id}
                                     sx={{
                                         border: (theme) => `2px solid ${theme.palette.secondary.main}`,
-                                        borderRadius: '10px',
+                                        borderRadius: '15px',
                                         p: 2,
                                         display: 'flex',
                                         alignItems: 'flex-start',
                                         gap: 2,
+                                        backgroundColor: theme.palette.primary.main,
                                     }}
-                                    elevation={4}
+                                    elevation={0}
                                 >
                                     <Box
                                         sx={(theme) => ({
@@ -406,7 +409,7 @@ const Home: React.FC = () => {
 
             </Box>
 {/*
-            <Paper component="section" className="home-final-cta" elevation={8}>
+            <Paper component="section" elevation={8}>
                 <Box className="home-final-cta__content">
                     <Typography variant="h3">{finalCta.title}</Typography>
                     <Typography variant="body1" className="home-final-cta__description">

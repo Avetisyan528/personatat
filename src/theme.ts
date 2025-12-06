@@ -6,6 +6,8 @@ const theme = createTheme({
         primary: {
             main: '#000000',
             contrastText: '#ffffff',
+            dark: '#101010',
+            light: '#9ca3af',
         },
         secondary: {
             main: '#c8a15a',

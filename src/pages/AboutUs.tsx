@@ -79,13 +79,13 @@ const About: React.FC = () => {
                     textAlign: 'left',
                     zIndex: 1,
                 }}>
-                    <Typography variant="overline" className="about-hero__eyebrow" sx={{mb: 1, display: 'block'}}>
+                    <Typography variant="overline" sx={{mb: 1, display: 'block'}}>
                         PersonaTat
                     </Typography>
-                    <Typography variant="h2" component="h1" className="about-hero__title" sx={{mb: 2}}>
+                    <Typography variant="h2" component="h1" sx={{mb: 2}}>
                         {brandStory.subtitle}
                     </Typography>
-                    <Typography variant="h5" className="about-hero__subtitle" sx={{mb: 3, fontWeight: 300}}>
+                    <Typography variant="h5" sx={{mb: 3, fontWeight: 300}}>
                         {brandStory.description}
                     </Typography>
                     <Button
@@ -118,14 +118,14 @@ const About: React.FC = () => {
                 </svg>
             </Box>
 
-            <Box component="section" className="about-mission" sx={{py: 8, px: 2, textAlign: 'center'}}>
+            <Box component="section" sx={{py: 8, px: 2, textAlign: 'center'}}>
                 <Typography variant="h3" component="h2" gutterBottom sx={{mb: 6}}>
                     Our Core Principles
                 </Typography>
                 <Grid container spacing={4} maxWidth="lg" sx={{mx: 'auto'}}>
                     {missionAndVision.map((item) => (
                         <Grid size={{xs: 12, md: 4}} key={item.id}>
-                            <Paper className="mission-card" elevation={6} sx={{p: 4, height: '100%'}}>
+                            <Paper elevation={6} sx={{p: 4, height: '100%'}}>
                                 {item.icon}
                                 <Typography variant="h6" component="h3" gutterBottom sx={{mt: 1}}>
                                     {item.title}
@@ -168,7 +168,7 @@ const About: React.FC = () => {
                             <Grid container spacing={2}>
                                 {keyStats.map((stat) => (
                                     <Grid size={{xs: 12}} key={stat.id}>
-                                        <Card className="stat-card" elevation={4} sx={{textAlign: 'center', p: 3}}>
+                                        <Card elevation={4} sx={{textAlign: 'center', p: 3}}>
                                             <Typography variant="h3" color="secondary" sx={{fontWeight: 700}}>
                                                 {stat.value}
                                             </Typography>
