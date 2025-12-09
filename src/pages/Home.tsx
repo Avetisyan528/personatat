@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Card, CardContent, Typography, Box, Paper, CardMedia} from '@mui/material';
+import {Button, Card, CardContent, Typography, Box, Paper, CardMedia, Grid} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useLanguage} from '../context/LanguageContext';
 import heroImage from '../static/HomeBackground.webp';
@@ -151,72 +151,74 @@ const Home: React.FC = () => {
                     <Typography variant="h3">{productShowcase.title}</Typography>
                 </Box>
 
-                <Box
-                    sx={{
-                        display: 'grid',
-                        gap: '24px',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gridTemplateRows: 'repeat(2, 1fr)',
-                    }}
+                <Grid
+                    container
+                    spacing={3}
+                    sx={{}}
                 >
                     {productShowcase.categories.map((category) => (
+                        <Grid size={{xs: 12, md: 4}}>
+                            <Card
+                                elevation={6}
+                                sx={{
+                                    height: '100%',
+                                    background: 'rgba(17, 17, 17, 0.85)',
+                                    borderRadius: '20px',
+                                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                                    backdropFilter: 'blur(6px)',
+                                    '& ul': {
+                                        margin: 0,
+                                        paddingLeft: '18px',
+                                        color: 'rgba(255, 255, 255, 0.78)',
+                                    },
+                                }}
+                            >
+                                <CardContent sx={{p: 0}}>
+                                    <CardMedia
+                                        component="img"
+                                        image={CATEGORY_IMAGES[category.id]}
+                                        alt={category.title}
+                                        sx={{
+                                            borderRadius: '20px 20px 0 0',
+                                            height: 280,
+                                            objectFit: 'cover',
+                                            marginBottom: '12px',
+                                            border: (theme) =>
+                                                `2px solid ${theme.palette.secondary.main}`,
+                                        }}
+                                    />
 
-                        <Card
-                            key={category.id}
-                            elevation={6}
-                            sx={{
-                                height: '100%',
-                                background: 'rgba(17, 17, 17, 0.85)',
-                                borderRadius: '20px',
-                                border: '1px solid rgba(255, 255, 255, 0.05)',
-                                backdropFilter: 'blur(6px)',
-                                '& ul': {
-                                    margin: 0,
-                                    paddingLeft: '18px',
-                                    color: 'rgba(255, 255, 255, 0.78)',
-                                },
-                            }}
-                        >
-                            <CardContent>
-                                <CardMedia
-                                    component="img"
-                                    image={CATEGORY_IMAGES[category.id]}
-                                    alt={category.title}
-                                    sx={{
-                                        borderRadius: '20px 20px 0 0',
-                                        height: 280,
-                                        objectFit: 'cover',
-                                        marginBottom: '12px',
-                                        border: (theme) => `2px solid ${theme.palette.secondary.main}`,
-                                    }}
-                                />
-                                <Typography variant="h4" component="h3" gutterBottom>
-                                    {category.title}
-                                </Typography>
-                                <Typography variant="body1" component="h3" gutterBottom>
-                                    {category.details}
-                                </Typography>
-                                <Typography
-                                    variant="h6"
-                                    onClick={() => navigate('/products')}
-                                    gutterBottom
-                                    color="secondary"
-                                    sx={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '6px',
-                                        textDecoration: 'none',
-                                        cursor: 'pointer',
-                                    }}
-                                >
-                                    See More
-                                    <ArrowForwardIcon sx={{fontSize: '1.2em'}}/>
-                                </Typography>
+                                    <Box sx={{p: 2}}>
+                                        <Typography variant="h4" component="h3" gutterBottom>
+                                            {category.title}
+                                        </Typography>
 
-                            </CardContent>
-                        </Card>
+                                        <Typography variant="body1" gutterBottom>
+                                            {category.details}
+                                        </Typography>
+
+                                        <Typography
+                                            variant="h6"
+                                            onClick={() => navigate('/products')}
+                                            gutterBottom
+                                            color="secondary"
+                                            sx={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '6px',
+                                                textDecoration: 'none',
+                                                cursor: 'pointer',
+                                            }}
+                                        >
+                                            See More
+                                            <ArrowForwardIcon sx={{fontSize: '1.2em'}}/>
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     ))}
-                </Box>
+                </Grid>
 
 
                 <Button
@@ -245,170 +247,161 @@ const Home: React.FC = () => {
                     padding: '0 9%',
                 }}
             >
-                <Box
-                    sx={{
-                        flex: 1,
-                        my: 'auto',
-                        mr: 20
-                    }}
+                <Grid
+                    container
+                    spacing={6}
+                    alignItems="center"
                 >
-
-                    <Box
-                        sx={{
-                            overflow: 'hidden',
-                            border: (theme) => `2px solid ${theme.palette.secondary.main}`,
-                            borderRadius: '20px',
-                        }}
-                    >
+                    {/* LEFT SIDE — IMAGE */}
+                    <Grid size={{md: 6}}>
                         <Box
-                            component="img"
-                            src={HomeAboutUs}
-                            alt="HomeAboutUs"
                             sx={{
-                                width: '100%',
-                                height: '100%',
-                            }}
-                        />
-                    </Box>
-
-                </Box>
-
-                <Box
-                    sx={{
-                        flex: 1,
-                    }}>
-
-                    <Paper
-                        sx={(theme) => ({
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 1,
-                            px: 3,
-                            py: 1,
-                            borderRadius: 7,
-                            mb: 4   ,
-                            fontSize: '0.8rem',
-                            fontWeight: 'bold',
-
-                            backgroundColor: theme.palette.secondary.main,
-                            color: theme.palette.secondary.contrastText,
-                        })}
-                        elevation={0}
-                    >
-                        <InfoIcon fontSize="small"/>
-                        {brandHighlight.about}
-                    </Paper>
-
-                    <Typography
-                        variant="h3"
-                        sx={(theme) => ({
-                            fontSize: '2.5rem',
-                            fontWeight: 'bold',
-                            mb: 3,
-                            lineHeight: 1.2,
-                            color: theme.palette.primary.contrastText,
-                            '& span': {
-                                color: theme.palette.secondary.main,
-                            },
-                        })}
-                    >
-                        {brandHighlight.titleTop}<br/>
-                        <Box component="span">{brandHighlight.titleBottom}</Box>
-                    </Typography>
-
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            mb: 4,
-                        }}
-                    >
-                        {brandHighlight.description}
-                    </Typography>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: 2,
-                            mt: 0,
-                        }}
-                    >
-                        {brandHighlight.bullets.map((bullet) => {
-                            const Icon = HOMEABOUT_ICONS[bullet.id];
-
-                            return (
-                                <Paper
-                                    key={bullet.id}
-                                    sx={{
-                                        border: (theme) => `2px solid ${theme.palette.secondary.main}`,
-                                        borderRadius: '15px',
-                                        p: 2,
-                                        display: 'flex',
-                                        alignItems: 'flex-start',
-                                        gap: 2,
-                                        backgroundColor: theme.palette.primary.main,
-                                    }}
-                                    elevation={0}
-                                >
-                                    <Box
-                                        sx={(theme) => ({
-                                            width: 48,
-                                            height: 48,
-                                            borderRadius: 2,
-                                            backgroundColor: theme.palette.secondary.main,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                        })}
-                                    >
-                                        <Icon sx={{ fontSize: 28, color: '#000' }} />
-                                    </Box>
-
-                                    <Box>
-                                        <Typography
-                                            variant="h6"
-                                            component="h3"
-                                            color="secondary"
-                                            sx={{
-                                                fontSize: '1.1rem',
-                                                fontWeight: 'bold',
-                                                mb: 0.5,
-                                            }}
-                                        >
-                                            {bullet.title}
-                                        </Typography>
-
-                                        <Typography variant="body2">
-                                            {bullet.description}
-                                        </Typography>
-                                    </Box>
-                                </Paper>
-                            );
-                        })}
-
-
-                        <Button
-                            variant="contained"
-                            onClick={() => navigate('/about')}
-                            color="secondary"
-                            sx={{
-                                justifySelf: 'start',
-                                fontWeight: 'bold',
-                                textTransform: 'none',
-                                borderRadius: 4,
-                                py: 1.5,
-                                px: 3,
-                                mt: 4,
-                                width: '50%',
+                                overflow: 'hidden',
+                                border: (theme) => `2px solid ${theme.palette.secondary.main}`,
+                                borderRadius: '20px',
+                                mr: { md: 20, xs: 0 },   // keep your margin-right only on desktop
                             }}
                         >
-                            {brandHighlight.ctaLabel}
-                        </Button>
-                    </Box>
-                </Box>
+                            <Box
+                                component="img"
+                                src={HomeAboutUs}
+                                alt="HomeAboutUs"
+                                sx={{
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                            />
+                        </Box>
+                    </Grid>
+
+                    {/* RIGHT SIDE — CONTENT */}
+                    <Grid size={{xs: 12, md:6}}>
+                        <Paper
+                            sx={(theme) => ({
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 1,
+                                px: 3,
+                                py: 1,
+                                borderRadius: 7,
+                                mb: 4,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
+
+                                backgroundColor: theme.palette.secondary.main,
+                                color: theme.palette.secondary.contrastText,
+                            })}
+                            elevation={0}
+                        >
+                            <InfoIcon fontSize="small" />
+                            {brandHighlight.about}
+                        </Paper>
+
+                        <Typography
+                            variant="h3"
+                            sx={(theme) => ({
+                                fontSize: '2.5rem',
+                                fontWeight: 'bold',
+                                mb: 3,
+                                lineHeight: 1.2,
+                                color: theme.palette.primary.contrastText,
+                                '& span': {
+                                    color: theme.palette.secondary.main,
+                                },
+                            })}
+                        >
+                            {brandHighlight.titleTop}
+                            <br />
+                            <Box component="span">{brandHighlight.titleBottom}</Box>
+                        </Typography>
+
+                        <Typography variant="body1" sx={{ mb: 4 }}>
+                            {brandHighlight.description}
+                        </Typography>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 2,
+                            }}
+                        >
+                            {brandHighlight.bullets.map((bullet) => {
+                                const Icon = HOMEABOUT_ICONS[bullet.id];
+
+                                return (
+                                    <Paper
+                                        key={bullet.id}
+                                        sx={{
+                                            border: (theme) => `2px solid ${theme.palette.secondary.main}`,
+                                            borderRadius: '15px',
+                                            p: 2,
+                                            display: 'flex',
+                                            alignItems: 'flex-start',
+                                            gap: 2,
+                                            backgroundColor: theme.palette.primary.main,
+                                        }}
+                                        elevation={0}
+                                    >
+                                        <Box
+                                            sx={(theme) => ({
+                                                width: 48,
+                                                height: 48,
+                                                borderRadius: 2,
+                                                backgroundColor: theme.palette.secondary.main,
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                            })}
+                                        >
+                                            <Icon sx={{ fontSize: 28, color: '#000' }} />
+                                        </Box>
+
+                                        <Box>
+                                            <Typography
+                                                variant="h6"
+                                                component="h3"
+                                                color="secondary"
+                                                sx={{
+                                                    fontSize: '1.1rem',
+                                                    fontWeight: 'bold',
+                                                    mb: 0.5,
+                                                }}
+                                            >
+                                                {bullet.title}
+                                            </Typography>
+
+                                            <Typography variant="body2">
+                                                {bullet.description}
+                                            </Typography>
+                                        </Box>
+                                    </Paper>
+                                );
+                            })}
+
+                            <Button
+                                variant="contained"
+                                onClick={() => navigate('/about')}
+                                color="secondary"
+                                sx={{
+                                    justifySelf: 'start',
+                                    fontWeight: 'bold',
+                                    textTransform: 'none',
+                                    borderRadius: 4,
+                                    py: 1.5,
+                                    px: 3,
+                                    mt: 4,
+                                    width: '50%',
+                                }}
+                            >
+                                {brandHighlight.ctaLabel}
+                            </Button>
+                        </Box>
+                    </Grid>
+                </Grid>
 
             </Box>
-{/*
+            {/*
             <Paper component="section" elevation={8}>
                 <Box className="home-final-cta__content">
                     <Typography variant="h3">{finalCta.title}</Typography>
