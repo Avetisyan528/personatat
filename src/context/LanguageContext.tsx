@@ -1,35 +1,35 @@
 import * as React from 'react';
 
-
 export type Language = 'en' | 'ru' | 'tt';
 
 export type NavKey = 'about' | 'contact' | 'products';
 
 export const NAV_LINKS: Array<{ key: NavKey; path: string }> = [
-    {key: 'about', path: '/about'},
-    {key: 'contact', path: '/contact'},
-    {key: 'products', path: '/products'},
+    { key: 'about', path: '/about' },
+    { key: 'contact', path: '/contact' },
+    { key: 'products', path: '/products' },
 ];
 
 export type FooterContactKey = 'email' | 'phone' | 'address';
-export type FooterCompanyKey = 'about' | 'careers' | 'team';
+export type FooterCompanyKey = 'about' | 'contacts' | 'terms' | 'privacy';
 export type FooterProductKey = 'beans' | 'sticks' | 'assorted';
 
 export const FOOTER_LINKS = {
     contact: [
-        {key: 'email' as FooterContactKey, path: 'mailto:hello@company.com'},
-        {key: 'phone' as FooterContactKey, path: 'tel:+123456789'},
-        {key: 'address' as FooterContactKey, path: '/contact#address'},
+        { key: 'email' as FooterContactKey, path: 'mailto:hello@company.com' },
+        { key: 'phone' as FooterContactKey, path: 'tel:+123456789' },
+        { key: 'address' as FooterContactKey, path: '/contact#address' },
     ],
     company: [
-        {key: 'about' as FooterCompanyKey, path: '/about'},
-        {key: 'careers' as FooterCompanyKey, path: '/careers'},
-        {key: 'team' as FooterCompanyKey, path: '/team'},
+        { key: 'about' as FooterCompanyKey, path: '/about' },
+        { key: 'contacts' as FooterCompanyKey, path: '/about' },
+        { key: 'terms' as FooterCompanyKey, path: '/about' },
+        { key: 'privacy' as FooterCompanyKey, path: '/about' },
     ],
     products: [
-        {key: 'beans' as FooterProductKey, path: '/products/beans'},
-        {key: 'sticks' as FooterProductKey, path: '/products/sticks'},
-        {key: 'assorted' as FooterProductKey, path: '/products/assorted'},
+        { key: 'beans' as FooterProductKey, path: '/products/beans' },
+        { key: 'sticks' as FooterProductKey, path: '/products/sticks' },
+        { key: 'assorted' as FooterProductKey, path: '/products/assorted' },
     ],
 };
 
@@ -126,6 +126,17 @@ type ContactFormFields = {
     message: string;
 };
 
+type ContactExtraCta = {
+    productsButton: {
+        label: string;
+        path: string;
+    };
+    callButton: {
+        label: string;
+        path: string;
+    };
+};
+
 type ContactPageTranslations = {
     hero: {
         title: string;
@@ -146,6 +157,72 @@ type ContactPageTranslations = {
         phone: ContactInfoItem;
         address: ContactInfoItem;
     };
+    extraCta: ContactExtraCta;
+};
+
+type PillarOrValueItem = {
+    icon: string;
+    title: string;
+    description: string;
+};
+
+type FullPillarItem = {
+    icon: string;
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+};
+
+type AboutUsPageTranslations = {
+    hero: {
+        titlePart1: string;
+        titlePart2Highlight: string;
+        subtitle: string;
+        description: string;
+    };
+
+    imageCallout: {
+        title: string;
+        description: string;
+    };
+
+    storyAndFacts: {
+        storyTitle: string;
+        paragraph1: string;
+        paragraph2: string;
+        quote: string;
+        fact1: {
+            value: string;
+            label: string;
+            subLabel: string;
+        };
+        fact2: {
+            value: string;
+            label: string;
+            subLabel: string;
+        };
+    };
+
+    missionAndValues: {
+        sectionTitle: string;
+        sectionSubtitle: string;
+
+        mission: {
+            icon: string;
+            title: string;
+            paragraph1: string;
+            paragraph2: string;
+        };
+
+        valuesTitle: string;
+        values: PillarOrValueItem[];
+    };
+
+    threePillars: {
+        sectionTitle: string;
+        sectionSubtitle: string;
+        pillars: FullPillarItem[];
+    };
 };
 
 type SimplePageCopy = {
@@ -162,7 +239,7 @@ type Translations = {
             brandHighlight: BrandHighlightTranslations;
             finalCta: FinalCtaTranslations;
         };
-        about: SimplePageCopy;
+        about: AboutUsPageTranslations;
         products: SimplePageCopy;
         contact: ContactPageTranslations;
     };
@@ -188,8 +265,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     description:
                         'Discover unique blends, premium beans, and tailored solutions for HoReCa and vending.',
                     ctas: [
-                        {id: 'cta-products', label: 'Explore Products', path: '/products'},
-                        {id: 'cta-contact', label: 'Contact Us', path: '/contact'},
+                        { id: 'cta-products', label: 'Explore Products', path: '/products' },
+                        { id: 'cta-contact', label: 'Contact Us', path: '/contact' },
                     ],
                 },
                 productShowcase: {
@@ -266,16 +343,99 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'Naberezhnye Chelny',
                     ],
                     buttons: [
-                        {id: 'final-products', label: 'View Products', path: '/products'},
-                        {id: 'final-contact', label: 'Contact Us', path: '/contact'},
-                        {id: 'final-about', label: 'About Company', path: '/about'},
+                        { id: 'final-products', label: 'View Products', path: '/products' },
+                        { id: 'final-contact', label: 'Contact Us', path: '/contact' },
+                        { id: 'final-about', label: 'About Company', path: '/about' },
                     ],
                     note: 'Hotline available throughout Russia',
                 },
             },
+
             about: {
-                title: 'About Us',
-                description: 'Information about PersonaTat will be available soon.',
+                hero: {
+                    titlePart1: 'Crafted with Passion,',
+                    titlePart2Highlight: 'Rooted in Tradition',
+                    subtitle: 'At Persona Tatarstan, we blend centuries-old coffee traditions with modern artisanal techniques.',
+                    description: "Our journey began with a simple mission: to bring the world's finest coffee to discerning enthusiasts while honoring the rich cultural legacy of Tatarstan.",
+                },
+
+                imageCallout: {
+                    title: 'Master Roasting Process',
+                    description: 'Every batch perfected by expert craftsmen',
+                },
+
+                storyAndFacts: {
+                    storyTitle: 'Our Journey',
+                    paragraph1: "Founded in the heart of Tatarstan, our brand represents a commitment to excellence that spans continents. We source the finest beans from renowned coffee-growing regions worldwide, bringing them back to our roastery where tradition meets innovation.",
+                    paragraph2: "Every batch is carefully roasted to perfection, preserving the unique flavor profiles that make each origin special. From the first crack to the final cooling, our master roasters ensure that every bean embodies the premium quality Persona Tatarstan is known for.",
+                    quote: "We don't just roast coffee—we craft experiences that connect people, cultures, and moments of joy in every cup.",
+                    fact1: {
+                        value: '6+',
+                        label: 'Years Excellence',
+                        subLabel: 'Since 2019',
+                    },
+                    fact2: {
+                        value: '50+',
+                        label: 'Coffee Origins',
+                        subLabel: 'Worldwide',
+                    },
+                },
+
+                missionAndValues: {
+                    sectionTitle: 'Our Mission & Values',
+                    sectionSubtitle: 'Guided by principles that define everything we do, from sourcing to serving',
+
+                    mission: {
+                        icon: 'crisisAlert',
+                        title: 'Our Mission',
+                        paragraph1: 'To deliver exceptional coffee experiences that honor tradition while embracing innovation. We aim to connect coffee lovers with the world\'s finest beans, roasted to perfection in the heart of Tatarstan.',
+                        paragraph2: 'Every cup we create represents our dedication to quality, sustainability, and the art of coffee making.',
+                    },
+
+                    valuesTitle: 'Our Values',
+                    values: [
+                        {
+                            icon: 'checkCircle',
+                            title: 'Quality First',
+                            description: 'Uncompromising standards in every step',
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Sustainability',
+                            description: 'Ethical sourcing and environmental care',
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Innovation',
+                            description: 'Blending tradition with modern techniques',
+                        },
+                    ],
+                },
+
+                threePillars: {
+                    sectionTitle: 'Our Three Pillars',
+                    sectionSubtitle: 'The foundation of excellence that defines every cup we create',
+                    pillars: [
+                        {
+                            icon: 'whatshot',
+                            title: 'Artisanal Roasting',
+                            paragraph1: 'Master roasters craft each batch with precision, bringing out the unique characteristics of every bean origin. Our time-honored techniques ensure consistent excellence.',
+                            paragraph2: 'We use state-of-the-art equipment combined with traditional methods passed down through generations.',
+                        },
+                        {
+                            icon: 'language',
+                            title: 'Global Sourcing',
+                            paragraph1: "We partner with the world's finest coffee farms, ensuring sustainable and ethical sourcing of premium beans. Quality from farm to cup.",
+                            paragraph2: 'Direct relationships with farmers guarantee fair pricing and exceptional bean quality year after year.',
+                        },
+                        {
+                            icon: 'accountBalance',
+                            title: 'Tatarstan Heritage',
+                            paragraph1: "Our roots in Tatarstan inspire us to honor tradition while embracing innovation in every cup we create. A legacy of excellence.",
+                            paragraph2: "We're proud to represent our region's commitment to quality and craftsmanship on the global stage.",
+                        },
+                    ],
+                },
             },
             products: {
                 title: 'Products',
@@ -315,6 +475,16 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         value: 'Naberezhnye Chelny, Russia',
                     },
                 },
+                extraCta: {
+                    productsButton: {
+                        label: 'Products',
+                        path: '/products',
+                    },
+                    callButton: {
+                        label: 'Call Us',
+                        path: 'tel:88006005635',
+                    },
+                },
             },
         },
         footer: {
@@ -329,9 +499,10 @@ const TRANSLATIONS: Record<Language, Translations> = {
 
             companyHeading: 'Company',
             companyLabels: {
-                about: 'About Us',
-                careers: 'Careers',
-                team: 'Team',
+                about: 'About the Brand',
+                contacts: 'Contacts',
+                terms: 'Terms of Use',
+                privacy: 'Privacy Policy',
             },
 
             productsHeading: 'Products',
@@ -361,8 +532,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     subtitle: 'PersonaTat — вкус обжарки премиум-класса для дома и бизнеса',
                     description: 'Уникальные бленды, отборные зерна и решения для HoReCa и вендинга.',
                     ctas: [
-                        {id: 'cta-products', label: 'Перейти к продукции', path: '/products'},
-                        {id: 'cta-contact', label: 'Связаться с нами', path: '/contact'},
+                        { id: 'cta-products', label: 'Перейти к продукции', path: '/products' },
+                        { id: 'cta-contact', label: 'Связаться с нами', path: '/contact' },
                     ],
                 },
                 productShowcase: {
@@ -438,16 +609,92 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'г. Набережные Челны',
                     ],
                     buttons: [
-                        {id: 'final-products', label: 'Посмотреть продукцию', path: '/products'},
-                        {id: 'final-contact', label: 'Связаться с нами', path: '/contact'},
-                        {id: 'final-about', label: 'О компании', path: '/about'},
+                        { id: 'final-products', label: 'Посмотреть продукцию', path: '/products' },
+                        { id: 'final-contact', label: 'Связаться с нами', path: '/contact' },
+                        { id: 'final-about', label: 'О компании', path: '/about' },
                     ],
                     note: 'Горячая линия работает по всей России',
                 },
             },
             about: {
-                title: 'О нас',
-                description: 'Информация о ПерсонаТат скоро будет доступна.',
+                hero: {
+                    titlePart1: 'Создано с любовью,',
+                    titlePart2Highlight: 'С корнями в Традиции',
+                    subtitle: 'В Persona Tatarstan мы сочетаем многовековые кофейные традиции с современными ремесленными техниками.',
+                    description: 'Наш путь начался с простой миссии: донести лучший в мире кофе до взыскательных ценителей, почитая при этом богатое культурное наследие Татарстана.'
+                },
+                imageCallout: {
+                    title: 'Процесс Мастерской Обжарки',
+                    description: 'Каждая партия доведена до совершенства опытными мастерами'
+                },
+                storyAndFacts: {
+                    storyTitle: 'Наша История',
+                    paragraph1: 'Основанный в самом сердце Татарстана, наш бренд олицетворяет приверженность к совершенству, охватывающую континенты. Мы закупаем лучшие зерна из известных регионов мира, выращивающих кофе, привозя их обратно в нашу обжарочную, где традиции встречаются с инновациями.',
+                    paragraph2: 'Каждая партия тщательно обжаривается до совершенства, сохраняя уникальные вкусовые профили, которые делают каждый сорт особенным. От первого потрескивания до финального охлаждения наши мастера-обжарщики гарантируют, что каждое зерно воплощает премиальное качество, которым славится Persona Tatarstan.',
+                    quote: 'Мы не просто обжариваем кофе — мы создаем впечатления, которые объединяют людей, культуры и моменты радости в каждой чашке.',
+                    fact1: {
+                        value: '6+',
+                        label: 'Лет Совершенства',
+                        subLabel: 'С 2019 года'
+                    },
+                    fact2: {
+                        value: '50+',
+                        label: 'Происхождений Кофе',
+                        subLabel: 'По всему миру'
+                    }
+                },
+                missionAndValues: {
+                    sectionTitle: 'Наша Миссия и Ценности',
+                    sectionSubtitle: 'Руководствуемся принципами, которые определяют всё, что мы делаем, от закупки до подачи',
+                    mission: {
+                        icon: 'crisisAlert',
+                        title: 'Наша Миссия',
+                        paragraph1: 'Предоставлять исключительный кофейный опыт, который чтит традиции, но при этом приветствует инновации. Наша цель — соединить любителей кофе с лучшими мировыми зернами, обжаренными до совершенства в сердце Татарстана.',
+                        paragraph2: 'Каждая чашка, которую мы создаем, отражает нашу приверженность качеству, устойчивости и искусству приготовления кофе.'
+                    },
+                    valuesTitle: 'Наши Ценности',
+                    values: [
+                        {
+                            icon: 'checkCircle',
+                            title: 'Качество Прежде Всего',
+                            description: 'Бескомпромиссные стандарты на каждом этапе'
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Устойчивость',
+                            description: 'Этичный поиск поставщиков и забота об окружающей среде'
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Инновации',
+                            description: 'Сочетание традиций с современными техниками'
+                        }
+                    ]
+                },
+                threePillars: {
+                    sectionTitle: 'Три Наших Столпа',
+                    sectionSubtitle: 'Основа превосходства, которая определяет каждую чашку, которую мы создаем',
+                    pillars: [
+                        {
+                            icon: 'whatshot',
+                            title: 'Ремесленная Обжарка',
+                            paragraph1: 'Мастера-обжарщики точно готовят каждую партию, раскрывая уникальные характеристики каждого происхождения зерна. Наши проверенные временем методы обеспечивают неизменное превосходство.',
+                            paragraph2: 'Мы используем современное оборудование в сочетании с традиционными методами, передаваемыми из поколения в поколение.'
+                        },
+                        {
+                            icon: 'language',
+                            title: 'Глобальный Сорсинг',
+                            paragraph1: 'Мы сотрудничаем с лучшими кофейными фермами мира, обеспечивая устойчивый и этичный поиск поставщиков зерен премиум-класса. Качество от фермы до чашки.',
+                            paragraph2: 'Прямые отношения с фермерами гарантируют справедливое ценообразование и исключительное качество зерна из года в год.'
+                        },
+                        {
+                            icon: 'accountBalance',
+                            title: 'Наследие Татарстана',
+                            paragraph1: 'Наши корни в Татарстане вдохновляют нас чтить традиции, приветствуя инновации в каждой чашке, которую мы создаем. Наследие превосходства.',
+                            paragraph2: 'Мы гордимся тем, что представляем приверженность нашего региона качеству и мастерству на мировой арене.'
+                        }
+                    ]
+                }
             },
             products: {
                 title: 'Продукты',
@@ -487,6 +734,17 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         value: 'г. Набережные Челны, Россия',
                     },
                 },
+
+                extraCta: {
+                    productsButton: {
+                        label: 'Продукция',
+                        path: '/products',
+                    },
+                    callButton: {
+                        label: 'Позвонить Нам',
+                        path: 'tel:88006005635',
+                    },
+                },
             },
         },
         footer: {
@@ -501,9 +759,10 @@ const TRANSLATIONS: Record<Language, Translations> = {
 
             companyHeading: 'Компания',
             companyLabels: {
-                about: 'О нас',
-                careers: 'Карьера',
-                team: 'Команда',
+                about: 'О бренде',
+                contacts: 'Контакты',
+                terms: 'Условия использования',
+                privacy: 'Политика конфиденциальности',
             },
 
             productsHeading: 'Продукты',
@@ -534,8 +793,8 @@ const TRANSLATIONS: Record<Language, Translations> = {
                     description:
                         'Уникаль блендлар, сайланган бөртекләр һәм HoReCa белән вендинг өчен чишелешләр.',
                     ctas: [
-                        {id: 'cta-products', label: 'Продукцияне карау', path: '/products'},
-                        {id: 'cta-contact', label: 'Без белән элемтә', path: '/contact'},
+                        { id: 'cta-products', label: 'Продукцияне карау', path: '/products' },
+                        { id: 'cta-contact', label: 'Без белән элемтә', path: '/contact' },
                     ],
                 },
                 productShowcase: {
@@ -612,16 +871,92 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         'Набережные Челны шәһәре',
                     ],
                     buttons: [
-                        {id: 'final-products', label: 'Продукцияне карау', path: '/products'},
-                        {id: 'final-contact', label: 'Бәйләнешкә чыгу', path: '/contact'},
-                        {id: 'final-about', label: 'Компания турында', path: '/about'},
+                        { id: 'final-products', label: 'Продукцияне карау', path: '/products' },
+                        { id: 'final-contact', label: 'Бәйләнешкә чыгу', path: '/contact' },
+                        { id: 'final-about', label: 'Компания турында', path: '/about' },
                     ],
                     note: 'Россия буенча эшли торган кайнар линия.',
                 },
             },
             about: {
-                title: 'Безнең турында',
-                description: 'PersonaTat турындагы мәгълүмат тиздән булачак.',
+                hero: {
+                    titlePart1: 'Дәрт белән Ясалган,',
+                    titlePart2Highlight: 'Традициягә Таянган',
+                    subtitle: "Persona Tatarstan'да без гасырлык кофе традицияләрен заманча осталык техникалары белән кушабыз.",
+                    description: "Безнең юлыбыз гади миссиядән башланды: Татарстанның бай мәдәни мирасын хөрмәт итеп, дөньяның иң яхшы кофесын таләпчән кофе яратучыларга җиткерү."
+                },
+                imageCallout: {
+                    title: 'Оста Обжарка Процессы',
+                    description: 'Һәр партия оста һөнәрчеләр тарафыннан камилләштерелә'
+                },
+                storyAndFacts: {
+                    storyTitle: 'Безнең Юлыбыз',
+                    paragraph1: 'Татарстанның үзәгендә оешкан безнең бренд континентларны колачлаган камиллеккә омтылуны чагылдыра. Без дөньяның танылган кофе үстерү төбәкләреннән иң яхшы бөртекләрне алып кайтабыз, аларны традиция инновацияләр белән очрашкан обжарка йортыбызга китерәбез.',
+                    paragraph2: 'Һәр партия камиллеккә ирешкәнче җентекләп обжаркалана, һәр чыгышны үзенчәлекле иткән уникаль тәм профильләре саклана. Беренче ярылудан алып соңгы суытуга кадәр, безнең мастер-обжаркачылар һәр бөртекнең Persona Tatarstan танылган премиум сыйфатын гәүдәләндерүен тәэмин итә.',
+                    quote: 'Без бары тик кофе гына обжаркаламыйбыз — без һәр чынаякта кешеләрне, мәдәниятләрне һәм шатлык мизгелләрен бәйләүче тәҗрибәләр тудырабыз.',
+                    fact1: {
+                        value: '6+',
+                        label: 'Ел Камиллек',
+                        subLabel: '2019 елдан бирле'
+                    },
+                    fact2: {
+                        value: '50+',
+                        label: 'Кофе Чыгышы',
+                        subLabel: 'Бөтен дөнья буенча'
+                    }
+                },
+                missionAndValues: {
+                    sectionTitle: 'Безнең Миссия һәм Ценностьлар',
+                    sectionSubtitle: 'Соурсингтан алып сервировкага кадәр без эшләгән һәрнәрсәне билгеләүче принциплар белән идарә ителә',
+                    mission: {
+                        icon: 'crisisAlert',
+                        title: 'Безнең Миссия',
+                        paragraph1: 'Традицияләрне хөрмәт итүче, әмма инновацияләрне кабул итүче үзенчәлекле кофе тәҗрибәләрен китерү. Безнең максат — кофе яратучыларны Татарстан йөрәгендә камиллеккә обжаркаланган дөньяның иң яхшы бөртекләре белән бәйләү.',
+                        paragraph2: 'Без ясаган һәр чынаяк сыйфатка, тотрыклылыкка һәм кофе ясау сәнгатенә тугрылыгыбызны чагылдыра.'
+                    },
+                    valuesTitle: 'Безнең Ценностьлар',
+                    values: [
+                        {
+                            icon: 'checkCircle',
+                            title: 'Сыйфат Беренче',
+                            description: 'Һәр адымда компромиссыз стандартлар'
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Тотрыклылык',
+                            description: 'Этик соурсинг һәм әйләнә-тирә мохиткә кайгырту'
+                        },
+                        {
+                            icon: 'checkCircle',
+                            title: 'Инновация',
+                            description: 'Традицияләрне заманча техникалар белән кушу'
+                        }
+                    ]
+                },
+                threePillars: {
+                    sectionTitle: 'Безнең Өч Нигез',
+                    sectionSubtitle: 'Без ясаган һәр чынаякны билгеләүче камиллек нигезе',
+                    pillars: [
+                        {
+                            icon: 'whatshot',
+                            title: 'Һөнәрчелек Обжаркасы',
+                            paragraph1: 'Мастер-обжаркачылар һәр партияне төгәллек белән әзерли, һәр бөртек чыгышының үзенчәлекле сыйфатларын ача. Вакыт сынавын үткән техникаларыбыз даими камиллекне тәэмин итә.',
+                            paragraph2: 'Без буыннар аша тапшырылган традицион методлар белән берлектә заманча җиһазлар кулланабыз.'
+                        },
+                        {
+                            icon: 'language',
+                            title: 'Глобаль Соурсинг',
+                            paragraph1: 'Без дөньяның иң яхшы кофе фермалары белән хезмәттәшлек итәбез, премиум бөртекләрне тотрыклы һәм этик соурсинглауны тәэмин итәбез. Фермадан чынаякка кадәр сыйфат.',
+                            paragraph2: 'Фермерлар белән туры элемтәләр ел саен гадел бәяләүне һәм гадәттән тыш бөртек сыйфатын гарантияли.'
+                        },
+                        {
+                            icon: 'accountBalance',
+                            title: 'Татарстан Мирасы',
+                            paragraph1: 'Татарстандагы тамырларыбыз безне традицияләрне хөрмәт итәргә, шул ук вакытта без ясаган һәр чынаякта инновацияләрне кабул итәргә рухландыра. Камиллек мирасы.',
+                            paragraph2: 'Без төбәгебезнең сыйфатка һәм һөнәрчелеккә тугрылыгын глобаль сәхнәдә күрсәтү белән горурланабыз.'
+                        }
+                    ]
+                }
             },
             products: {
                 title: 'Продукция',
@@ -661,6 +996,17 @@ const TRANSLATIONS: Record<Language, Translations> = {
                         value: 'Россия, Набережные Челны',
                     },
                 },
+
+                extraCta: {
+                    productsButton: {
+                        label: 'Товарлар',
+                        path: '/products',
+                    },
+                    callButton: {
+                        label: 'Безгә шалтыратыгыз',
+                        path: 'tel:88006005635',
+                    },
+                },
             },
         },
         footer: {
@@ -676,8 +1022,9 @@ const TRANSLATIONS: Record<Language, Translations> = {
             companyHeading: 'Компания',
             companyLabels: {
                 about: 'Без турында',
-                careers: 'Карьер мөмкинлекләре',
-                team: 'Команда',
+                contacts: 'Контактлар',
+                terms: 'Куллану шартлары',
+                privacy: 'Хосусыйлык сәясәте',
             },
 
             productsHeading: 'Продукция',
@@ -707,9 +1054,9 @@ type LanguageProviderProps = {
 };
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
-                                                                      children,
-                                                                      defaultLanguage = 'en',
-                                                                  }) => {
+    children,
+    defaultLanguage = 'en',
+}) => {
     const [language, setLanguage] = React.useState<Language>(defaultLanguage);
 
     const toggleLanguage = React.useCallback(() => {

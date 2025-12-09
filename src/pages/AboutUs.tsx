@@ -1,140 +1,68 @@
 import * as React from 'react';
-import {Box, Typography, Paper, Grid, useTheme} from '@mui/material';
+import { Box, Typography, Paper, Grid, useTheme } from '@mui/material';
 //import {useLanguage} from '../context/LanguageContext';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 //import {LocationOn, MailOutline, Phone} from "@mui/icons-material";
 import AboutUs from "../static/AboutUs.avif";
-import {alpha} from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LanguageIcon from '@mui/icons-material/Language';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-
-
-/*interface ContactFormState {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-}*/
+import { useLanguage } from '../context/LanguageContext';
 
 const About: React.FC = () => {
     const theme = useTheme();
-    //const {translations} = useLanguage();
-    // const navigate = useNavigate();
+    const { translations } = useLanguage();
 
-    //const {title, description} = translations.pages.about;
-    /*
-
-        const brandStory = {
-            title: translations.header.navLabels.about,
-            subtitle: title,
-            description: description,
-        };
-
-        const missionAndVision = [
-            {
-                id: 'mv-1',
-                icon: <EmojiEventsIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
-                title: 'Our Mission',
-                description: 'To deliver the highest quality, professionally roasted coffee experiences to every customer, whether at home or in a professional setting (HoReCa).',
-            },
-            {
-                id: 'mv-2',
-                icon: <InsightsIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
-                title: 'Our Vision',
-                description: 'To be the leading national provider of specialized coffee blends and solutions, recognized for quality and customer focus.',
-            },
-            {
-                id: 'mv-3',
-                icon: <PublicIcon color="secondary" sx={{fontSize: 40, mb: 1}}/>,
-                title: 'Sustainability Pledge',
-                description: 'Committed to ethical sourcing and sustainable practices across our entire supply chain, from bean to cup.',
-            },
-        ];
-    */
-
-    /*const keyStats = [
-        {id: 'stat-1', value: '2010', label: 'Founded in'},
-        {id: 'stat-2', value: '50+', label: 'SKUs Developed'},
-        {id: 'stat-3', value: '99%', label: 'Customer Satisfaction'},
-        {id: 'stat-4', value: '10M+', label: 'Cups Served'},
-    ];*/
-
-    /*Remove Later*/
-
-    // Destructure contact page translation segments
-    //const {info} = translations.pages.contact;
-
-    /*  const [formData, setFormData] = React.useState<ContactFormState>({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-      });*/
-    /*
-        const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-            setFormData({
-                ...formData,
-                [e.target.name]: e.target.value,
-            });
-        };
-
-        const handleSubmit = (e: React.FormEvent) => {
-            e.preventDefault();
-            // **TODO: Implement actual form submission logic (e.g., API call)**
-            console.log('Form Submitted:', formData);
-            alert(form.submissionMessage); // Display a placeholder alert
-            setFormData({name: '', email: '', subject: '', message: ''}); // Clear form
-        };*/
-
-    /* const contactInfo = [
-         {id: 1, icon: <MailOutline color="primary"/>, title: info.email.title, value: info.email.value},
-         {id: 2, icon: <Phone color="primary"/>, title: info.phone.title, value: info.phone.value},
-         {id: 3, icon: <LocationOn color="primary"/>, title: info.address.title, value: info.address.value},
-     ];
- */
+    // Destructure the 'about' section from the translations object
+    const { about } = translations.pages;
 
     return (
         <Box>
             <Box component="section"
-                 sx={{py: 10,}}>
+                sx={{ py: 10, }}>
 
                 <Box textAlign="center" mb={6}>
                     <Typography
                         variant="h1"
                         gutterBottom
-                        sx={{maxWidth: 900, mx: 'auto', textAlign: 'center'}}
+                        sx={{ maxWidth: 900, mx: 'auto', textAlign: 'center' }}
                     >
-                        Crafted with Passion,{' '}
+                        {/* Use translation keys for Hero Title */}
+                        {about.hero.titlePart1}{' '}
                         <Box
                             component="span"
-                            sx={{color: (theme) => theme.palette.secondary.main}}
+                            sx={{ color: (theme) => theme.palette.secondary.main }}
                         >
-                            Rooted in Tradition
+                            {about.hero.titlePart2Highlight}
                         </Box>
                     </Typography>
 
-                    <Typography variant="h4" gutterBottom sx={{maxWidth: 900, mx: 'auto'}}>
-                        At Persona Tatarstan, we blend centuries-old coffee traditions with modern artisanal techniques.
-                        Each bean tells a story of quality, heritage, and exceptional craftsmanship.
+                    <Typography variant="h4" gutterBottom sx={{ maxWidth: 900, mx: 'auto' }}>
+                        {/* Use translation key for Hero Subtitle */}
+                        {about.hero.subtitle}
                     </Typography>
 
-                    <Typography variant="body2" sx={{mt: 2, maxWidth: 600, mx: 'auto'}}>
-                        Our journey began with a simple mission: to bring the world's finest coffee to discerning
-                        enthusiasts while honoring the rich cultural legacy of Tatarstan.
+                    <Typography variant="body2" sx={{ mt: 2, maxWidth: 600, mx: 'auto' }}>
+                        {/* Use translation key for Hero Description */}
+                        {about.hero.description}
                     </Typography>
                 </Box>
+            </Box>
+
+            <Box component="section"
+                sx={{ py: 8, px: 2, }}>
 
 
-                <Grid container spacing={15} maxWidth="lg" sx={{mx: 'auto'}}>
-                    <Grid size={{md: 6}}
-                          sx={{
-                              my: 5,
-                              overflow: 'hidden',
-                              borderRadius: '30px',
-                          }}
+                <Grid container spacing={15} maxWidth="lg" sx={{ mx: 'auto' }}>
+                    <Grid size={{ xs: 12, md: 6 }}
+                        sx={{
+                            my: 5,
+                            overflow: 'hidden',
+                            borderRadius: '30px',
+                        }}
                     >
 
                         <Box
@@ -182,20 +110,21 @@ const About: React.FC = () => {
                                     zIndex: 2,
                                 }}
                             >
-                                <Typography variant="h6" sx={{fontWeight: 'bold'}} color='secondary'>
-                                    Master Roasting Process
+                                {/* Use translation keys for Image Callout */}
+                                <Typography variant="h6" sx={{ fontWeight: 'bold' }} color='secondary'>
+                                    {about.imageCallout.title}
                                 </Typography>
                                 <Typography variant="body2" color={theme.palette.primary.light}>
-                                    Every batch perfected by expert craftsmen
+                                    {about.imageCallout.description}
                                 </Typography>
                             </Box>
                         </Box>
 
                     </Grid>
 
-                    <Grid size={{md: 6}} spacing={6} container>
+                    <Grid size={{ xs: 12, md: 6 }} spacing={6} container>
 
-                        <Grid size={{md: 12}}>
+                        <Grid size={{ xs: 12, md: 12 }}>
                             <Grid
                                 sx={{
                                     pt: 2,
@@ -210,32 +139,21 @@ const About: React.FC = () => {
                                         backgroundColor: theme.palette.primary.main,
                                     }}
                                 >
-                                    <Grid size={{md: 12}}>
-                                        {/* Title */}
+                                    <Grid size={{ xs: 12, md: 12 }}>
                                         <Typography variant="h4" component="h3" gutterBottom>
-                                            Our Journey
+                                            {about.storyAndFacts.storyTitle}
                                         </Typography>
 
-                                        {/* First paragraph */}
                                         <Typography variant="body1" gutterBottom>
-                                            Founded in the heart of Tatarstan, our brand represents a commitment to
-                                            excellence that spans continents. We source the finest beans from renowned
-                                            coffee-growing regions worldwide, bringing them back to our roastery where
-                                            tradition meets innovation.
+                                            {about.storyAndFacts.paragraph1}
                                         </Typography>
 
-                                        {/* Second paragraph */}
                                         <Typography variant="body1" gutterBottom>
-                                            Every batch is carefully roasted to perfection, preserving the unique flavor
-                                            profiles that make each origin special. From the first crack to the final
-                                            cooling, our master roasters ensure that every bean embodies the premium
-                                            quality Persona Tatarstan is known for.
+                                            {about.storyAndFacts.paragraph2}
                                         </Typography>
 
-                                        {/* Quote */}
-                                        <Typography variant="body2" sx={{fontStyle: 'italic', mt: 2}}>
-                                            "We don't just roast coffee—we craft experiences that connect people,
-                                            cultures, and moments of joy in every cup."
+                                        <Typography variant="body2" sx={{ fontStyle: 'italic', mt: 2 }}>
+                                            "{about.storyAndFacts.quote}"
                                         </Typography>
                                     </Grid>
                                 </Paper>
@@ -243,7 +161,7 @@ const About: React.FC = () => {
                         </Grid>
 
                         <Grid
-                            size={{md: 6}}
+                            size={{ xs: 6, md: 6 }}
                             sx={{
                                 p: 4,
                                 borderRadius: '30px',
@@ -256,21 +174,21 @@ const About: React.FC = () => {
                                 textAlign: 'center',
                             }}
                         >
-                            <Typography variant="h3" component="div" sx={{fontWeight: 700, marginBottom: 1}}>
-                                6+
+                            <Typography variant="h3" component="div" sx={{ fontWeight: 700, marginBottom: 1 }}>
+                                {about.storyAndFacts.fact1.value}
                             </Typography>
 
-                            <Typography variant="body1" component="div" sx={{fontWeight: 500}}>
-                                Years Excellence
+                            <Typography variant="body1" component="div" sx={{ fontWeight: 500 }}>
+                                {about.storyAndFacts.fact1.label}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Since 2019
+                                {about.storyAndFacts.fact1.subLabel}
                             </Typography>
                         </Grid>
 
                         <Grid
-                            size={{md: 6}}
+                            size={{ xs: 6, md: 6 }}
                             sx={{
                                 p: 4,
                                 borderRadius: '30px',
@@ -286,21 +204,21 @@ const About: React.FC = () => {
                             <Typography
                                 variant="h3"
                                 component="div"
-                                sx={{fontWeight: 700, marginBottom: 1}}
+                                sx={{ fontWeight: 700, marginBottom: 1 }}
                             >
-                                50+
+                                {about.storyAndFacts.fact2.value}
                             </Typography>
 
                             <Typography
                                 variant="body1"
                                 component="div"
-                                sx={{fontWeight: 500, marginBottom: 0.5}}
+                                sx={{ fontWeight: 500, marginBottom: 0.5 }}
                             >
-                                Coffee Origins
+                                {about.storyAndFacts.fact2.label}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Worldwide
+                                {about.storyAndFacts.fact2.subLabel}
                             </Typography>
                         </Grid>
 
@@ -309,24 +227,23 @@ const About: React.FC = () => {
             </Box>
 
             <Box component="section"
-                 sx={{
-                     py: 10,
-                     textAlign: 'center',
-                 }}
+                sx={{
+                    py: 10,
+                    px: 2,
+                    textAlign: 'center',
+                }}
             >
-                <Box sx={{mb: 10}}>
-                    <Typography variant="h2" gutterBottom>Our Mission & Values
+                <Box sx={{ mb: 10 }}>
+                    <Typography variant="h2" gutterBottom>{about.missionAndValues.sectionTitle}
                     </Typography>
-                    <Typography variant="h5" gutterBottom>Guided by principles that define everything we do, from
-                        sourcing to serving
-
+                    <Typography variant="h5" gutterBottom>{about.missionAndValues.sectionSubtitle}
                     </Typography>
                 </Box>
 
-                <Grid container spacing={6} maxWidth="lg" sx={{mx: 'auto'}}>
+                <Grid container spacing={6} maxWidth="lg" sx={{ mx: 'auto' }}>
 
                     <Grid
-                        size={{md: 6}}
+                        size={{ xs: 12, md: 6 }}
                         sx={{
                             p: 4,
                             borderRadius: '30px',
@@ -353,8 +270,7 @@ const About: React.FC = () => {
                                 gap: 3,
                             }}
                         >
-                            {/* Icon + Title */}
-                            <Box sx={{display: 'flex', alignItems: 'center', gap: 3}}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                                 <Box
                                     sx={(theme) => ({
                                         p: 2,
@@ -365,29 +281,26 @@ const About: React.FC = () => {
                                         justifyContent: 'center',
                                     })}
                                 >
-                                    <CrisisAlertIcon color="primary" sx={{fontSize: 40}}/>
+                                    <CrisisAlertIcon color="primary" sx={{ fontSize: 40 }} />
                                 </Box>
 
-                                <Typography variant="h4" component="div" sx={{fontWeight: 500}}>
-                                    Our Mission
+                                <Typography variant="h4" component="div" sx={{ fontWeight: 500 }}>
+                                    {about.missionAndValues.mission.title}
                                 </Typography>
                             </Box>
 
                             <Typography variant="body2" component="div">
-                                To deliver exceptional coffee experiences that honor tradition while embracing
-                                innovation. We aim to connect coffee lovers with the world's finest beans, roasted to
-                                perfection in the heart of Tatarstan.
+                                {about.missionAndValues.mission.paragraph1}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Every cup we create represents our dedication to quality, sustainability, and the art of
-                                coffee making.
+                                {about.missionAndValues.mission.paragraph2}
                             </Typography>
                         </Box>
                     </Grid>
 
                     <Grid
-                        size={{md: 6}}
+                        size={{ xs: 12, md: 6 }}
                         sx={{
                             p: 4,
                             borderRadius: '30px',
@@ -406,10 +319,10 @@ const About: React.FC = () => {
                             },
                         }}
                     >
-                        <Box sx={{display: 'flex', flexDirection: 'column', gap: 3}}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
 
                             {/* Title */}
-                            <Box sx={{display: 'flex', alignItems: 'center', gap: 3}}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                                 <Box
                                     sx={(theme) => ({
                                         p: 2,
@@ -420,18 +333,17 @@ const About: React.FC = () => {
                                         justifyContent: 'center',
                                     })}
                                 >
-                                    <FavoriteIcon color="primary" sx={{fontSize: 40}}/>
+                                    <FavoriteIcon color="primary" sx={{ fontSize: 40 }} />
                                 </Box>
 
-                                <Typography variant="h4" sx={{fontWeight: 600, fontSize: '1.5rem'}}>
-                                    Our Values
+                                <Typography variant="h4" sx={{ fontWeight: 600, fontSize: '1.5rem' }}>
+                                    {about.missionAndValues.valuesTitle}
                                 </Typography>
                             </Box>
 
-                            {/* Value List */}
-                            <Box sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 
-                                <Box sx={{display: 'flex', alignItems: 'flex-start'}}>
+                                <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
                                     <CheckCircleIcon
                                         sx={{
                                             fontSize: 32,
@@ -439,36 +351,18 @@ const About: React.FC = () => {
                                         }}
                                     />
 
-                                    <Box sx={{ml: 2}}>
-                                        <Typography variant="h6" sx={{fontWeight: 600}}>
-                                            Quality First
+                                    <Box sx={{ ml: 2 }}>
+                                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                            {about.missionAndValues.values[0].title}
                                         </Typography>
 
-                                        <Typography variant="body1" sx={{fontSize: '1.1rem'}}>
-                                            Uncompromising standards in every step
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box sx={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <CheckCircleIcon
-                                        sx={{
-                                            fontSize: 32,
-                                            color: (theme) => theme.palette.secondary.main,
-                                        }}
-                                    />
-
-                                    <Box sx={{ml: 2}}>
-                                        <Typography variant="h6" sx={{fontWeight: 600}}>
-                                            Sustainability
-                                        </Typography>
-
-                                        <Typography variant="body1" sx={{fontSize: '1.1rem'}}>
-                                            Ethical sourcing and environmental care
+                                        <Typography variant="body1" sx={{ fontSize: '1.1rem' }}>
+                                            {about.missionAndValues.values[0].description}
                                         </Typography>
                                     </Box>
                                 </Box>
 
-                                <Box sx={{display: 'flex', alignItems: 'flex-start'}}>
+                                <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
                                     <CheckCircleIcon
                                         sx={{
                                             fontSize: 32,
@@ -476,13 +370,32 @@ const About: React.FC = () => {
                                         }}
                                     />
 
-                                    <Box sx={{ml: 2}}>
-                                        <Typography variant="h6" sx={{fontWeight: 600}}>
-                                            Innovation
+                                    <Box sx={{ ml: 2 }}>
+                                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                            {about.missionAndValues.values[1].title}
                                         </Typography>
 
-                                        <Typography variant="body1" sx={{fontSize: '1.1rem'}}>
-                                            Blending tradition with modern techniques
+                                        <Typography variant="body1" sx={{ fontSize: '1.1rem' }}>
+                                            {about.missionAndValues.values[1].description}
+                                        </Typography>
+                                    </Box>
+                                </Box>
+
+                                <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                                    <CheckCircleIcon
+                                        sx={{
+                                            fontSize: 32,
+                                            color: (theme) => theme.palette.secondary.main,
+                                        }}
+                                    />
+
+                                    <Box sx={{ ml: 2 }}>
+                                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                            {about.missionAndValues.values[2].title}
+                                        </Typography>
+
+                                        <Typography variant="body1" sx={{ fontSize: '1.1rem' }}>
+                                            {about.missionAndValues.values[2].description}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -498,21 +411,24 @@ const About: React.FC = () => {
             </Box>
 
             <Box component="section"
-                 sx={{
-                     py: 10,
-                     textAlign: 'center',
-                 }}
+                sx={{
+                    py: 10,
+                    px: 2,
+                    textAlign: 'center',
+                }}
 
             >
 
-                <Box sx={{mb: 4}}>
-                    <Typography variant="h3">Something</Typography>
-                    <Typography variant="body1">Something</Typography>
+                <Box sx={{ mb: 4 }}>
+                    {/* Use translation keys for Three Pillars titles */}
+                    <Typography variant="h3">{about.threePillars.sectionTitle}</Typography>
+                    <Typography variant="body1">{about.threePillars.sectionSubtitle}</Typography>
                 </Box>
-                <Grid container spacing={6} maxWidth="lg" sx={{mx: 'auto'}}>
+                <Grid container spacing={6} maxWidth="lg" sx={{ mx: 'auto' }}>
 
+                    {/* Pillar 1: Artisanal Roasting */}
                     <Grid
-                        size={{md: 4}}
+                        size={{ xs: 12, md: 4 }}
                         sx={{
                             p: 4,
                             borderRadius: '30px',
@@ -550,26 +466,28 @@ const About: React.FC = () => {
                                     justifyContent: 'center',
                                 })}
                             >
-                                <WhatshotIcon color='primary' sx={{fontSize: 40}}/>
+                                <WhatshotIcon color='primary' sx={{ fontSize: 40 }} />
                             </Box>
 
-                            <Typography variant="h4" component="div" sx={{fontWeight: 500}}>
-                                Artisanal Roasting
+                            {/* Use translation key for Pillar 1 Title */}
+                            <Typography variant="h4" component="div" sx={{ fontWeight: 500 }}>
+                                {about.threePillars.pillars[0].title}
+                            </Typography>
+
+                            {/* Use translation keys for Pillar 1 paragraphs */}
+                            <Typography variant="body2" component="div">
+                                {about.threePillars.pillars[0].paragraph1}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Master roasters craft each batch with precision, bringing out the unique characteristics
-                                of every bean origin. Our time-honored techniques ensure consistent excellence.
-                            </Typography>
-
-                            <Typography variant="body2" component="div">
-                                We use state-of-the-art equipment combined with traditional methods passed down through
-                                generations.
+                                {about.threePillars.pillars[0].paragraph2}
                             </Typography>
                         </Box>
                     </Grid>
+
+                    {/* Pillar 2: Global Sourcing */}
                     <Grid
-                        size={{md: 4}}
+                        size={{ xs: 12, md: 4 }}
                         sx={{
                             p: 4,
                             borderRadius: '30px',
@@ -607,26 +525,25 @@ const About: React.FC = () => {
                                     justifyContent: 'center',
                                 })}
                             >
-                                <LanguageIcon color='primary' sx={{fontSize: 40}}/>
+                                <LanguageIcon color='primary' sx={{ fontSize: 40 }} />
                             </Box>
 
-                            <Typography variant="h4" component="div" sx={{fontWeight: 500}}>
-                                Global Sourcing
+                            <Typography variant="h4" component="div" sx={{ fontWeight: 500 }}>
+                                {about.threePillars.pillars[1].title}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                We partner with the world's finest coffee farms, ensuring sustainable and ethical
-                                sourcing of premium beans. Quality from farm to cup.
+                                {about.threePillars.pillars[1].paragraph1}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Direct relationships with farmers guarantee fair pricing and exceptional bean quality
-                                year after year.
+                                {about.threePillars.pillars[1].paragraph2}
                             </Typography>
                         </Box>
                     </Grid>
+
                     <Grid
-                        size={{md: 4}}
+                        size={{ xs: 12, md: 4 }}
                         sx={{
                             p: 4,
                             borderRadius: '30px',
@@ -664,21 +581,19 @@ const About: React.FC = () => {
                                     justifyContent: 'center',
                                 })}
                             >
-                                <AccountBalanceIcon color='primary' sx={{fontSize: 40}}/>
+                                <AccountBalanceIcon color='primary' sx={{ fontSize: 40 }} />
                             </Box>
 
-                            <Typography variant="h4" component="div" sx={{fontWeight: 500}}>
-                                Tatarstan Heritage
+                            <Typography variant="h4" component="div" sx={{ fontWeight: 500 }}>
+                                {about.threePillars.pillars[2].title}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                Our roots in Tatarstan inspire us to honor tradition while embracing innovation in every
-                                cup we create. A legacy of excellence.
+                                {about.threePillars.pillars[2].paragraph1}
                             </Typography>
 
                             <Typography variant="body2" component="div">
-                                We're proud to represent our region's commitment to quality and craftsmanship on the
-                                global stage.
+                                {about.threePillars.pillars[2].paragraph2}
                             </Typography>
                         </Box>
                     </Grid>
