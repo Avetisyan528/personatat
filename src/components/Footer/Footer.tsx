@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Box, Divider, Typography} from '@mui/material';
 import {Link as RouterLink} from 'react-router-dom';
-import {useLanguage, FOOTER_LINKS} from '../../context/LanguageContext';
+import {useLanguage} from '../../context/LanguageContext';
 import logo from "../../static/LogoTransparent.png";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import {useTheme} from '@mui/material/styles';
+import {FOOTER_LINKS} from '../../types/navigation';
 
 const socialLinks = [
     {icon: InstagramIcon, url: "https://instagram.com/personatat"},
@@ -35,24 +36,22 @@ const Footer: React.FC = () => {
             <Box
                 sx={{
                     display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' }, 
-                    justifyContent: { xs: 'flex-start', md: 'space-between' },
+                    flexDirection: {xs: 'column', md: 'row'},
+                    justifyContent: {xs: 'flex-start', md: 'space-between'},
                     flexWrap: 'wrap',
                     gap: 4,
                 }}
             >
-                {/* 1. Logo and Social Links Section - Centered on Mobile (xs) */}
-                <Box 
-                    sx={{ 
-                        flex: { xs: '1 1 100%', md: '1 1 200px' },
-                        textAlign: { xs: 'center', md: 'left' } // Center text/logo on mobile
+                <Box
+                    sx={{
+                        flex: {xs: '1 1 100%', md: '1 1 200px'},
+                        textAlign: {xs: 'left', md: 'left'}
                     }}
                 >
                     <Box
                         component={RouterLink}
                         to="/"
-                        // Display logo box as block to allow centering via parent's textAlign: center
-                        sx={{ display: 'inline-block' }} 
+                        sx={{display: 'inline-block'}}
                     >
                         <Box component="img" src={logo} alt={translations.header.title} sx={{maxHeight: 40}}/>
                     </Box>
@@ -63,17 +62,17 @@ const Footer: React.FC = () => {
                     </Typography>
 
                     {/* Social links need special handling for centering a flex container */}
-                    <Box 
+                    <Box
                         sx={{
-                            display: 'flex', 
-                            gap: 1, 
-                            justifyContent: { xs: 'center', md: 'flex-start' } // Center icons on mobile
+                            display: 'flex',
+                            gap: 1,
+                            justifyContent: {xs: 'flex-start', md: 'flex-start'} // Center icons on mobile
                         }}
                     >
                         {socialLinks.map(({icon: Icon, url}, index) => (
                             <Box
                                 key={index}
-                                component="a" 
+                                component="a"
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -98,20 +97,20 @@ const Footer: React.FC = () => {
                 </Box>
 
                 {/* 2. Products Section - Centered on Mobile (xs) */}
-                <Box 
-                    sx={{ 
-                        flex: { xs: '1 1 100%', md: '1 1 150px' },
-                        textAlign: { xs: 'center', md: 'left' } 
+                <Box
+                    sx={{
+                        flex: {xs: '1 1 100%', md: '1 1 150px'},
+                        textAlign: {xs: 'left', md: 'left'}
                     }}
                 >
                     <Typography variant="h6" sx={{
                         color: theme.palette.secondary.main,
-                        mt: { xs: 2, md: 0 } 
+                        mt: {xs: 2, md: 0}
                     }}>{footer.productsHeading}</Typography>
                     {FOOTER_LINKS.products.map(link => (
                         <Typography
                             key={link.key}
-                            component={RouterLink} 
+                            component={RouterLink}
                             to={link.path}
                             sx={{
                                 display: 'block',
@@ -127,20 +126,20 @@ const Footer: React.FC = () => {
                 </Box>
 
                 {/* 3. Company Section - Centered on Mobile (xs) */}
-                <Box 
-                    sx={{ 
-                        flex: { xs: '1 1 100%', md: '1 1 150px' },
-                        textAlign: { xs: 'center', md: 'left' } 
+                <Box
+                    sx={{
+                        flex: {xs: '1 1 100%', md: '1 1 150px'},
+                        textAlign: {xs: 'left', md: 'left'}
                     }}
                 >
                     <Typography variant="h6" sx={{
                         color: theme.palette.secondary.main,
-                        mt: { xs: 2, md: 0 } 
+                        mt: {xs: 2, md: 0}
                     }}>{footer.companyHeading}</Typography>
                     {FOOTER_LINKS.company.map(link => (
                         <Typography
                             key={link.key}
-                            component={RouterLink} 
+                            component={RouterLink}
                             to={link.path}
                             sx={{
                                 color: theme.palette.primary.light,
@@ -156,15 +155,15 @@ const Footer: React.FC = () => {
                 </Box>
 
                 {/* 4. Contact Section - Centered on Mobile (xs) */}
-                <Box 
-                    sx={{ 
-                        flex: { xs: '1 1 100%', md: '1 1 150px' },
-                        textAlign: { xs: 'center', md: 'left' } 
+                <Box
+                    sx={{
+                        flex: {xs: '1 1 100%', md: '1 1 150px'},
+                        textAlign: {xs: 'left', md: 'left'}
                     }}
                 >
                     <Typography variant="h6" sx={{
                         color: theme.palette.secondary.main,
-                        mt: { xs: 2, md: 0 } 
+                        mt: {xs: 2, md: 0}
                     }}>{footer.contactHeading}</Typography>
                     {FOOTER_LINKS.contact.map(link => (
                         <Typography
@@ -185,26 +184,26 @@ const Footer: React.FC = () => {
                 </Box>
             </Box>
 
-        <Box sx={{width: '100%', mt: 4}}>
-            <Divider
-                sx={(theme) => ({
-                    borderColor: theme.palette.secondary.main,
-                    mb: 2,
-                })}
-            />
-            <Typography
-                variant="caption"
-                sx={{
-                    display: 'block',
-                    textAlign: 'center',
-                    color: 'rgba(255, 255, 255, 0.6)',
-                    mb: 1,
-                }}
-            >
-                {footer.rights}
-            </Typography>
+            <Box sx={{width: '100%', mt: 4}}>
+                <Divider
+                    sx={(theme) => ({
+                        borderColor: theme.palette.secondary.main,
+                        mb: 2,
+                    })}
+                />
+                <Typography
+                    variant="caption"
+                    sx={{
+                        display: 'block',
+                        textAlign: 'center',
+                        color: 'rgba(255, 255, 255, 0.6)',
+                        mb: 1,
+                    }}
+                >
+                    {footer.rights}
+                </Typography>
+            </Box>
         </Box>
-    </Box>
     );
 };
 

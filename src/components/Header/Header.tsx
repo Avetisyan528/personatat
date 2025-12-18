@@ -18,8 +18,11 @@ import {
     useMediaQuery,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link as RouterLink } from 'react-router-dom';
-import { useLanguage, NAV_LINKS, Language, availableLanguages } from '../../context/LanguageContext';
+import {Link as RouterLink} from 'react-router-dom';
+import {useLanguage} from '../../context/LanguageContext';
+import {NAV_LINKS} from '../../types/navigation';
+import {Language, availableLanguages} from '../../types'
+
 import logo from '../../static/LogoTransparent.png';
 
 // Flags
@@ -40,9 +43,9 @@ const FLAG_BASE_SX = {
 };
 
 const FLAG_STYLES: Record<Language, object> = {
-    en: { backgroundImage: `url("data:image/svg+xml,${UK_FLAG_SVG}")` },
-    ru: { backgroundImage: `url("data:image/svg+xml,${RUSSIAN_FLAG_SVG}")` },
-    tt: { backgroundImage: `url("data:image/svg+xml,${TATAR_FLAG_SVG}")` },
+    en: {backgroundImage: `url("data:image/svg+xml,${UK_FLAG_SVG}")`},
+    ru: {backgroundImage: `url("data:image/svg+xml,${RUSSIAN_FLAG_SVG}")`},
+    tt: {backgroundImage: `url("data:image/svg+xml,${TATAR_FLAG_SVG}")`},
 };
 
 const LANGUAGE_LABELS: Record<Language, string> = {
@@ -52,7 +55,7 @@ const LANGUAGE_LABELS: Record<Language, string> = {
 };
 
 const Header: React.FC = () => {
-    const { language, setLanguage, translations } = useLanguage();
+    const {language, setLanguage, translations} = useLanguage();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -64,16 +67,22 @@ const Header: React.FC = () => {
                 color="primary"
                 enableColorOnDark
                 elevation={0}
-                sx={{ borderBottom: `1px solid ${theme.palette.secondary.main}` }}
+                sx={{borderBottom: `1px solid ${theme.palette.secondary.main}`}}
             >
-                <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box component={RouterLink} to="/" sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
-                        <Box component="img" src={logo} alt={translations.header.title} sx={{ maxHeight: 40 }} />
+                <Toolbar sx={{display: 'flex', alignItems: 'center'}}>
+                    <Box component={RouterLink} to="/" sx={{display: 'flex', alignItems: 'center', mr: 2}}>
+                        <Box component="img" src={logo} alt={translations.header.title} sx={{maxHeight: 40}}/>
                     </Box>
 
                     {!isMobile && (
-                        <Box sx={{ display: 'flex', flexGrow: 1, gap: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
-                            {NAV_LINKS.map(({ key, path }) => {
+                        <Box sx={{
+                            display: 'flex',
+                            flexGrow: 1,
+                            gap: 1,
+                            justifyContent: 'flex-end',
+                            alignItems: 'center'
+                        }}>
+                            {NAV_LINKS.map(({key, path}) => {
                                 const isProducts = key === 'products';
                                 return (
                                     <Button
@@ -82,7 +91,7 @@ const Header: React.FC = () => {
                                         to={path}
                                         color={isProducts ? 'secondary' : 'inherit'}
                                         variant={isProducts ? 'contained' : 'text'}
-                                        sx={{ fontWeight: 600, borderRadius: 999, px: 2.5 }}
+                                        sx={{fontWeight: 600, borderRadius: 999, px: 2.5}}
                                     >
                                         {translations.header.navLabels[key]}
                                     </Button>
@@ -98,14 +107,22 @@ const Header: React.FC = () => {
                                     borderRadius: '999px',
                                     backgroundColor: 'rgba(255,255,255,0.08)',
                                     minWidth: 80,
-                                    "& .MuiSelect-select": { display: 'flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.5, color: 'inherit' },
-                                    "&:hover": { backgroundColor: 'rgba(255,255,255,0.16)' },
+                                    "& .MuiSelect-select": {
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                        px: 1.5,
+                                        py: 0.5,
+                                        color: 'inherit'
+                                    },
+                                    "&:hover": {backgroundColor: 'rgba(255,255,255,0.16)'},
                                 }}
                             >
                                 {availableLanguages.map((value) => (
-                                    <MenuItem key={value} value={value} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                        <Box component="span" sx={{ ...FLAG_BASE_SX, ...FLAG_STYLES[value] }} />
-                                        <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                                    <MenuItem key={value} value={value}
+                                              sx={{display: 'flex', alignItems: 'center', gap: 1}}>
+                                        <Box component="span" sx={{...FLAG_BASE_SX, ...FLAG_STYLES[value]}}/>
+                                        <Typography variant="caption" sx={{fontWeight: 600}}>
                                             {LANGUAGE_LABELS[value]}
                                         </Typography>
                                     </MenuItem>
@@ -115,26 +132,26 @@ const Header: React.FC = () => {
                     )}
 
                     {isMobile && (
-                        <IconButton color="inherit" onClick={() => setDrawerOpen(true)} sx={{ ml: 'auto' }}>
-                            <MenuIcon />
+                        <IconButton color="inherit" onClick={() => setDrawerOpen(true)} sx={{ml: 'auto'}}>
+                            <MenuIcon/>
                         </IconButton>
                     )}
                 </Toolbar>
             </AppBar>
 
             <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} color="primary" elevation={0}>
-                <Box sx={{ width: 250, p: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
+                <Box sx={{width: 250, p: 2}} role="presentation" onClick={() => setDrawerOpen(false)}>
                     <List>
-                        {NAV_LINKS.map(({ key, path }) => (
+                        {NAV_LINKS.map(({key, path}) => (
                             <ListItem key={key} disablePadding>
                                 <ListItemButton component={RouterLink} to={path}>
-                                    <ListItemText primary={translations.header.navLabels[key]} />
+                                    <ListItemText primary={translations.header.navLabels[key]}/>
                                 </ListItemButton>
                             </ListItem>
                         ))}
                     </List>
 
-                    <Box sx={{ mt: 2 }}>
+                    <Box sx={{mt: 2}}>
                         <Select
                             value={language}
                             onChange={(e: SelectChangeEvent<Language>) => setLanguage(e.target.value as Language)}
@@ -152,7 +169,7 @@ const Header: React.FC = () => {
                                 <MenuItem
                                     key={value}
                                     value={value}
-                                    sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                                    sx={{display: 'flex', alignItems: 'center', gap: 1}}
                                 >
                                     <Box
                                         component="span"
@@ -162,7 +179,7 @@ const Header: React.FC = () => {
                                         }}
                                     />
 
-                                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                                    <Typography variant="body1" sx={{fontWeight: 600}}>
                                         {LANGUAGE_LABELS[value]}
                                     </Typography>
                                 </MenuItem>

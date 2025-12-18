@@ -10,6 +10,8 @@ import Products from './pages/Products';
 import ContactUs from './pages/ContactUs';
 import CoffeeMarketAnalysis from './pages/CoffeeMarketAnalysis';
 import BrandDetailSection from './pages/BrandDetailSection';
+import SingleProductPage from "./pages/SingleProductPage";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/products" element={<Products />} />
+                    <Route path="/products/:categorySlug" element={<CategoryPage />} />
+                    <Route path="/products/:categorySlug/:productSlug" element={<SingleProductPage />} />
                     <Route path="/contact" element={<ContactUs />} />
                     <Route path="/analysis" element={<CoffeeMarketAnalysis />} />
                     <Route path="/marketingResearch" element={<BrandDetailSection />} />
