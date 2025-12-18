@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from '@mui/material';
-import {useLanguage} from "../context/LanguageContext";
+//import {useLanguage} from "../context/LanguageContext";
 import { Link } from "react-router-dom";
 import {PRODUCT_IMAGES} from "../constants/productImages";
 import { useProducts } from '../context/ProductsContext';
