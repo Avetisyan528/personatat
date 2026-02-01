@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.45d8409f.css",
+    "main.js": "/static/js/main.be57190c.js",
+    "static/media/tea1.png": "/static/media/tea1.163103361750c87c010b.png",
+    "static/media/tea4.png": "/static/media/tea4.9cbbf7c02760375366cd.png",
+    "static/media/tea3.png": "/static/media/tea3.53e7d76b2029946be630.png",
+    "static/media/tea2.png": "/static/media/tea2.b3fc209caefe2e19f054.png",
+    "static/media/HomeBackground.webp": "/static/media/HomeBackground.66a078af296a0a6cba56.webp",
+    "static/media/coffee5.png": "/static/media/coffee5.5d0030ef03d405b83fd0.png",
+    "static/media/coffee1.png": "/static/media/coffee1.cd6518d7fa09c8a97921.png",
+    "static/media/coffee2.png": "/static/media/coffee2.48e813f1ec2f1efe756c.png",
+    "static/media/coffee3.png": "/static/media/coffee3.f29fd4622fa6cc071d16.png",
+    "static/media/coffee4.png": "/static/media/coffee4.5270b178f22c903ec2be.png",
+    "static/media/ClassicGround.webp": "/static/media/ClassicGround.f60fd51e75fff7b76900.webp",
+    "static/media/AboutUs.avif": "/static/media/AboutUs.5fbdf1d0d688a77def94.avif",
+    "static/media/FlavoredGround.webp": "/static/media/FlavoredGround.dbf6a0f640c85eeb0af3.webp",
+    "static/media/ContactUs.avif": "/static/media/ContactUs.7f89bd234d13fe7a7e44.avif",
+    "static/media/InstantCoffee.webp": "/static/media/InstantCoffee.1d382721fb7fd048e5a5.webp",
+    "static/media/LogoTransparent.png": "/static/media/LogoTransparent.3ede121b5d061081d82f.png",
+    "static/media/Capsules.avif": "/static/media/Capsules.da2187df7ad22b0297f0.avif",
+    "static/media/HomeAboutUs.avif": "/static/media/HomeAboutUs.78dab4b679e24b0e4ab9.avif",
+    "static/media/FlavoredBeans.avif": "/static/media/FlavoredBeans.bcd47e69a52904c9e86e.avif",
+    "static/media/ClassicBeans.avif": "/static/media/ClassicBeans.e8d91834bb6355f833fc.avif",
+    "static/media/jacobs_monarch_bag_800g_front.avif": "/static/media/jacobs_monarch_bag_800g_front.1227f6c59304b59b34d2.avif",
+    "index.html": "/index.html",
+    "main.45d8409f.css.map": "/static/css/main.45d8409f.css.map",
+    "main.be57190c.js.map": "/static/js/main.be57190c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.45d8409f.css",
+    "static/js/main.be57190c.js"
+  ]
+}
