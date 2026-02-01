@@ -35,26 +35,61 @@ const Products: React.FC = () => {
                     </Button>
                 ))}
             </Box>
-
             <Grid container spacing={4} justifyContent="center">
                 {products.map((product) => {
-                    const categorySlug = categories.find(c => c.id === product.categoryId)?.slug || '';
+                    const categorySlug =
+                        categories.find(c => c.id === product.categoryId)?.slug || '';
 
                     return (
-                        <Grid size={{xs: 5, md: 3}} key={product.id}>
+                        <Grid size={{ xs: 5, md: 3 }} key={product.id}>
                             <Card
                                 component={Link}
                                 to={`/products/${categorySlug}/${product.slug}`}
                                 sx={{
-                                    borderRadius: 3,
-                                    boxShadow: (theme) => `0 0 30px ${theme.palette.secondary.main}66`,
-                                    overflow: 'hidden',
+                                    borderRadius: 4,
+                                    height: '100%',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    height: '100%',
-                                    transition: 'transform 0.2s',
-                                    textDecoration: 'none', // remove underline
-                                    '&:hover': {transform: 'scale(1.03)'},
+                                    textDecoration: 'none',
+                                    overflow: 'hidden',
+
+                                    /* === MORE TRANSPARENT GLASS === */
+                                    background: `
+              linear-gradient(
+                135deg,
+                rgba(255,255,255,0.14),
+                rgba(255,255,255,0.04)
+              )
+            `,
+
+                                    backdropFilter: 'blur(26px) saturate(190%)',
+                                    WebkitBackdropFilter: 'blur(26px) saturate(190%)',
+
+                                    border: '1px solid rgba(255,255,255,0.18)',
+
+                                    boxShadow: (theme) => `
+              0 12px 40px rgba(0,0,0,0.2),
+              inset 0 1px 0 rgba(255,255,255,0.28),
+              0 0 35px ${theme.palette.secondary.main}33
+            `,
+
+                                    transition: 'all 0.25s ease',
+
+                                    '&:hover': {
+                                        transform: 'scale(1.04)',
+                                        backdropFilter: 'blur(30px) saturate(210%)',
+                                        WebkitBackdropFilter: 'blur(30px) saturate(210%)',
+                                        boxShadow: (theme) => `
+                0 18px 55px rgba(0,0,0,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.35),
+                0 0 45px ${theme.palette.secondary.main}55
+              `,
+                                    },
+
+                                    /* === FALLBACK === */
+                                    '@supports not (backdrop-filter: blur(10px))': {
+                                        background: 'rgba(255,255,255,0.85)',
+                                    },
                                 }}
                             >
                                 <CardMedia
@@ -66,15 +101,16 @@ const Products: React.FC = () => {
                                         height: 280,
                                         width: '100%',
                                         objectFit: 'contain',
-                                        filter: (theme) => `drop-shadow(0 0 10px ${theme.palette.secondary.main})`,
-                                        //border: (theme) => `2px solid ${theme.palette.secondary.main}`,
+                                        filter: (theme) =>
+                                            `drop-shadow(0 0 16px ${theme.palette.secondary.main})`,
                                     }}
                                 />
-                                <CardContent sx={{flexGrow: 1, textAlign: 'center'}}>
+
+                                <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
                                     <Typography variant="h6" gutterBottom>
                                         {product.name}
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                                    <Typography variant="body2" color="text.secondary">
                                         {product.description}
                                     </Typography>
                                 </CardContent>
@@ -83,6 +119,7 @@ const Products: React.FC = () => {
                     );
                 })}
             </Grid>
+
 
         </Box>
     );
