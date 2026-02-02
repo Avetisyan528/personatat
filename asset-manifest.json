@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.45d8409f.css",
-    "main.js": "/static/js/main.be57190c.js",
+    "main.js": "/static/js/main.7f4c0584.js",
     "static/media/tea1.png": "/static/media/tea1.163103361750c87c010b.png",
     "static/media/tea4.png": "/static/media/tea4.9cbbf7c02760375366cd.png",
     "static/media/tea3.png": "/static/media/tea3.53e7d76b2029946be630.png",
@@ -25,10 +25,10 @@
     "static/media/jacobs_monarch_bag_800g_front.avif": "/static/media/jacobs_monarch_bag_800g_front.1227f6c59304b59b34d2.avif",
     "index.html": "/index.html",
     "main.45d8409f.css.map": "/static/css/main.45d8409f.css.map",
-    "main.be57190c.js.map": "/static/js/main.be57190c.js.map"
+    "main.7f4c0584.js.map": "/static/js/main.7f4c0584.js.map"
   },
   "entrypoints": [
     "static/css/main.45d8409f.css",
-    "static/js/main.be57190c.js"
+    "static/js/main.7f4c0584.js"
   ]
 }
