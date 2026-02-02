@@ -13,6 +13,7 @@ import theme from "../theme";
 const Home: React.FC = () => {
 
     const {translations} = useLanguage();
+    const {language} = useLanguage();
     const navigate = useNavigate();
 
     const {hero, productShowcase, brandHighlight} = translations.pages.home;
@@ -177,7 +178,7 @@ const Home: React.FC = () => {
                                     <CardMedia
                                         component="img"
                                         image={CATEGORY_IMAGES[category.id]}
-                                        alt={category.title}
+                                        alt={category.title[language]}
                                         sx={{
                                             borderRadius: '20px 20px 0 0',
                                             height: 280,
@@ -190,11 +191,11 @@ const Home: React.FC = () => {
 
                                     <Box sx={{p: 2}}>
                                         <Typography variant="h4" component="h3" gutterBottom>
-                                            {category.title}
+                                            {category.title[language]}
                                         </Typography>
 
                                         <Typography variant="body1" gutterBottom>
-                                            {category.details}
+                                            {category.details[language]}
                                         </Typography>
 
                                         <Typography

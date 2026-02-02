@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {Box, Button, Card, CardContent, CardMedia, Grid, Typography} from '@mui/material';
-//import {useLanguage} from "../context/LanguageContext";
+import {useLanguage} from "../context/LanguageContext";
 import { Link } from "react-router-dom";
 import {PRODUCT_IMAGES} from "../constants/productImages";
 import { useProducts } from '../context/ProductsContext';
 import {useCategories} from "../context/CategoryContext";
 
 const Products: React.FC = () => {
-    //const { language } = useLanguage();
+    const { language } = useLanguage();
     const {categories} = useCategories();
     const { products } = useProducts();
 
@@ -23,7 +23,7 @@ const Products: React.FC = () => {
                         variant="outlined"
                         color="secondary"
                     >
-                        {cat.title}
+                        {cat.title[language]}
                     </Button>
                 ))}
             </Box>
@@ -53,7 +53,7 @@ const Products: React.FC = () => {
                                     component="img"
                                     height="200"
                                     image={PRODUCT_IMAGES[product.imageKey]}
-                                    alt={product.name}
+                                    alt={product.name[language]}
                                     sx={{
                                         objectFit: 'cover',
                                         borderRadius: 3,
@@ -64,10 +64,10 @@ const Products: React.FC = () => {
                                 />
                                 <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
                                     <Typography variant="h6" gutterBottom>
-                                        {product.name}
+                                        {product.name[language]}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary" gutterBottom>
-                                        {product.description}
+                                        {product.description[language]}
                                     </Typography>
                                 </CardContent>
                             </Card>

@@ -2,15 +2,15 @@ import { MultiLangText } from './index';
 
 export type ProductCategory = {
     id: string;
-    title: string;//MultiLangText;
-    details: string;//MultiLangText;
+    title: MultiLangText;
+    details: MultiLangText;
     slug: string;
 };
 
 export type Product = {
     id: string;
-    name: string;//MultiLangText;
-    description: string;//MultiLangText;
+    name: MultiLangText;
+    description: MultiLangText;
     typeId: string;
     categoryId: string;
     imageKey: string;
