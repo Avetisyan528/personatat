@@ -21,15 +21,15 @@ export const PRODUCTS: Product[] = [
         imageKey: 'classic-stick',
         iconKey: 'cup',
     },
-    {
+    /*{
         id: 'bean-arabica',
         slug: 'arabica-beans',
         name: '100% Arabica Beans',
-        /* {
+        /!* {
          en: '100% Arabica Beans',
          ru: '100% Арабика',
          tt: '100% Արաբիկա',
-     },*/
+     },*!/
         description: 'Smooth, aromatic Arabica beans.',
         //     {
         //     en: 'Smooth, aromatic Arabica beans.',
@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
         categoryId: 'beans',
         imageKey: 'arabica-beans',
         iconKey: 'beans',
-    },
+    },*/
     {
         id: 'stick-mild',
         slug: 'mild-stick',
