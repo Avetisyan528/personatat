@@ -1,5 +1,30 @@
 import { Product } from '../types/products';
 
+const coffeeItems = [
+    ...Array.from({ length: 92 }, (_, i) => {
+        const index = i + 1;
+        return {
+            id: `coffeenew${index}`,
+            slug: `coffeenew${index}`,
+            name: {
+                en: 'New Coffee Stick',
+                ru: '*Translate to russian*',
+                tt: '*Translate to Tatarian*',
+            },
+            description: {
+                en: 'Our new coffee stick.',
+                ru: '*Translate to russian*',
+                tt: '*Translate to Tatarian*',
+            },
+            typeId: 'instant',
+            categoryId: 'sticks',
+            imageKey: `coffeenew${index}`,
+            iconKey: 'cup',
+        };
+    }),
+];
+
+
 export const PRODUCTS: Product[] = [
     {
         id: 'stick-classic',
@@ -162,5 +187,6 @@ export const PRODUCTS: Product[] = [
         categoryId: 'sticks',
         imageKey: 'peach-tea-stick',
         iconKey: 'cup',
-    }
+    },
+    ...coffeeItems,
 ];
