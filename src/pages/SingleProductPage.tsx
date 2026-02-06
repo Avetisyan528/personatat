@@ -6,7 +6,7 @@ import {PRODUCT_IMAGES} from "../constants/productImages";
 import { useProducts } from '../context/ProductsContext';
 import {useCategories} from "../context/CategoryContext";
 
-const Products: React.FC = () => {
+const SingleProductPage: React.FC = () => {
     const { language } = useLanguage();
     const {categories} = useCategories();
     const { products } = useProducts();
@@ -80,4 +80,4 @@ const Products: React.FC = () => {
     );
 };
 
-export default Products;
+export default SingleProductPage;

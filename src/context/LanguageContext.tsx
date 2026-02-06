@@ -18,7 +18,7 @@ type LanguageProviderProps = {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
                                                                       children,
-                                                                      defaultLanguage = 'en',
+                                                                      defaultLanguage = 'ru',
                                                                   }) => {
     const [language, setLanguage] = React.useState<Language>(defaultLanguage);
 
